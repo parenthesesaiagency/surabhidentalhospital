@@ -1,8 +1,9 @@
 import { legalMetadata, LegalPage } from "@/components/legal-page";
+import { site } from "@/lib/data/site";
 
 export const metadata = legalMetadata(
   "Terms of Service",
-  "The terms that govern your use of the Dentora website and services.",
+  `The terms that govern your use of the ${site.name} website and services.`,
   "/terms",
 );
 
@@ -11,7 +12,7 @@ export default function TermsPage() {
     <LegalPage
       title="Terms of Service"
       updated="1 March 2026"
-      intro="These terms govern your use of the Dentora website and our dental services in Jaipur. By using this website or booking an appointment, you agree to these terms."
+      intro={`These terms govern your use of the ${site.name} website and our dental services in ${site.location.city}. By using this website or booking an appointment, you agree to these terms.`}
       sections={[
         {
           heading: "Website content",
@@ -34,7 +35,8 @@ export default function TermsPage() {
         {
           heading: "Limitation of liability",
           paragraphs: [
-            "While we take every care to keep website content accurate and current, we cannot guarantee that it is error-free or complete. To the fullest extent permitted by law, Dentora is not liable for any loss arising from reliance on website content.",
+            "While we take every care to keep website content accurate and current, we cannot guarantee that it is error-free or complete. To the fullest extent permitted by law, " +
+              `${site.name} is not liable for any loss arising from reliance on website content.`,
           ],
         },
       ]}

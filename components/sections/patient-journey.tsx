@@ -10,41 +10,13 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { media } from "@/lib/media";
+import { content } from "@/lib/data/content";
 import { ease } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { Lines } from "@/components/ui/lines";
 
-const stages = [
-  {
-    n: "01",
-    title: "Consultation",
-    copy: "We start with a conversation. You tell us what's bothering you — or what you're hoping to improve — and we listen before we look.",
-    image: media.journey[0],
-    alt: "A relaxed first consultation with a dentist at Dentora, Jaipur",
-  },
-  {
-    n: "02",
-    title: "Diagnosis",
-    copy: "A careful examination, supported by digital imaging, reveals the full picture. You'll understand your oral health in plain language — no jargon.",
-    image: media.journey[1],
-    alt: "Detailed dental diagnosis with digital imaging at Dentora",
-  },
-  {
-    n: "03",
-    title: "Treatment",
-    copy: "If treatment is needed, it's delivered gently and exactly as explained. You stay informed at every step and never feel rushed.",
-    image: media.journey[2],
-    alt: "Comfortable dental treatment in progress at Dentora",
-  },
-  {
-    n: "04",
-    title: "Aftercare",
-    copy: "Care doesn't end when you leave the chair. We follow up, guide your recovery and help you keep your results for years to come.",
-    image: media.journey[3],
-    alt: "Friendly follow-up and aftercare guidance at Dentora",
-  },
-];
+const stages = content.journey.stages;
 
 export function PatientJourney() {
   const reduce = useReducedMotion();
@@ -68,11 +40,11 @@ export function PatientJourney() {
   /* Reduced motion — render a calm, static journey instead of sticky scroll. */
   if (reduce) {
     return (
-      <section className="bg-ink py-24 text-cream sm:py-32">
+      <section className="bg-ink py-16 text-cream sm:py-32">
         <Container>
-          <Eyebrow tone="dark">Your Journey</Eyebrow>
+          <Eyebrow tone="dark">{content.journey.eyebrow}</Eyebrow>
           <h2 className="mt-6 max-w-3xl text-[clamp(1.9rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-white">
-            From first visit to confident smile.
+            {content.journey.heading}
           </h2>
           <div className="mt-14 grid gap-6 sm:grid-cols-2">
             {stages.map((s) => (
@@ -97,18 +69,16 @@ export function PatientJourney() {
     <section
       ref={sectionRef}
       className="relative bg-ink text-cream"
-      aria-label="The patient journey — from first visit to confident smile"
+      aria-label={content.journey.ariaLabel}
     >
       <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden">
         <Container className="relative z-10">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             {/* Copy */}
             <div>
-              <Eyebrow tone="dark">Your Journey</Eyebrow>
+              <Eyebrow tone="dark">{content.journey.eyebrow}</Eyebrow>
               <h2 className="mt-6 text-[clamp(1.9rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-white">
-                From first visit
-                <br />
-                to confident smile.
+                <Lines lines={content.journey.headingLines} />
               </h2>
 
               <div className="mt-10 flex gap-6">

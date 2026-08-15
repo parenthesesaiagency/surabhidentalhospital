@@ -4,20 +4,22 @@ import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { media } from "@/lib/media";
 import { heroStats } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { ease, cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { BookingForm } from "@/components/hero/booking-form";
+import { useBooking } from "@/components/booking/booking-provider";
 
-const headline = "A better smile starts with better care.";
-const highlightWords = ["better", "care."];
+const { headline, highlightWords } = content.hero;
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const { open: openBooking } = useBooking();
 
   return (
     <section
       className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden"
-      aria-label="Dentora — premium dental care in Jaipur"
+      aria-label={content.hero.ariaLabel}
     >
       {/* Cinematic background */}
       <motion.div
@@ -27,13 +29,22 @@ export function Hero() {
         className="absolute inset-0"
       >
         <Image
-          src={media.hero}
-          alt="Modern dental treatment suite at Dentora, Jaipur"
+          src={media.heroMobile}
+          alt={content.hero.imageAlt}
           fill
           priority
           sizes="100vw"
           quality={80}
-          className="object-cover"
+          className="object-cover md:hidden"
+        />
+        <Image
+          src={media.heroWeb}
+          alt={content.hero.imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+          className="hidden object-cover md:block"
         />
       </motion.div>
 
@@ -47,8 +58,8 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-6 pb-16 pt-32 lg:px-10 lg:pb-24 lg:pt-36">
-        <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-6 pb-12 pt-28 lg:px-10 lg:pb-24 lg:pt-36">
+        <div className="grid items-end gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
             <motion.p
               initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -57,7 +68,7 @@ export function Hero() {
               className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-teal-100 backdrop-blur-sm"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-teal" aria-hidden="true" />
-              Premium Dental Care · Jaipur
+              {content.hero.badge}
             </motion.p>
 
             <h1 className="max-w-4xl text-[clamp(2.6rem,7.2vw,5.4rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-white">
@@ -66,7 +77,7 @@ export function Hero() {
               ) : (
                 <>
                   {headline.split(" ").map((word, i) => {
-                    const isHighlight = highlightWords.includes(word);
+                    const isHighlight = highlightWords.some((w) => w === word);
                     return (
                       <span
                         key={`${word}-${i}`}
@@ -104,31 +115,36 @@ export function Hero() {
               transition={{ duration: 0.75, ease, delay: 1.25 }}
               className="mt-7 max-w-xl text-base leading-[1.75] text-white/80 sm:text-lg"
             >
-              Advanced dentistry, experienced specialists, and a calmer approach to
-              your oral health — all under one roof in Jaipur.
+              {content.hero.subtext}
             </motion.p>
 
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, ease, delay: 1.4 }}
-              className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
+              className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
             >
               <Button
-                href="/#doctors"
+                href={content.hero.primaryCta.href}
                 variant="white"
                 size="lg"
-                trackEvent="doctors_click"
+                trackEvent="appointment_click"
+                onClick={(e: React.MouseEvent) => {
+                  if (window.innerWidth < 1024) {
+                    e.preventDefault();
+                    openBooking();
+                  }
+                }}
               >
-                Meet Our Doctors
+                {content.hero.primaryCta.label}
               </Button>
               <Button
-                href="/services"
+                href={content.hero.secondaryCta.href}
                 variant="outline-light"
                 size="lg"
                 trackEvent="treatment_click"
               >
-                Explore Treatments
+                {content.hero.secondaryCta.label}
               </Button>
             </motion.div>
 
@@ -137,7 +153,7 @@ export function Hero() {
               initial={reduce ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, ease, delay: 1.6 }}
-              className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-white/15 pt-7"
+              className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/15 pt-6 sm:mt-14 sm:pt-7"
             >
               {heroStats.map((stat) => (
                 <li
@@ -156,14 +172,14 @@ export function Hero() {
             </motion.ul>
           </div>
 
-          {/* Booking form */}
+          {/* Booking form (desktop only — mobile uses the dialog) */}
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease, delay: 1.35 }}
-            className="w-full lg:justify-self-end lg:max-w-[24.5rem]"
+            className="hidden w-full lg:block lg:justify-self-end lg:max-w-[24.5rem]"
           >
-            <BookingForm />
+            <BookingForm idPrefix="booking" />
           </motion.div>
         </div>
       </div>

@@ -1,30 +1,34 @@
 /** Local SEO keywords — used as metadata keywords only; never stuffed into copy. */
 
+import { site } from "@/lib/data/site";
+
+const city = site.location.city;
+
 export const homeKeywords = [
-  "dentist in Jaipur",
-  "best dentist in Jaipur",
-  "dental clinic in Jaipur",
-  "best dental clinic Jaipur",
-  "teeth cleaning Jaipur",
-  "root canal treatment Jaipur",
-  "dental implants Jaipur",
-  "cosmetic dentist Jaipur",
-  "teeth whitening Jaipur",
+  `dentist in ${city}`,
+  `best dentist in ${city}`,
+  `dental clinic in ${city}`,
+  `best dental clinic ${city}`,
+  `teeth cleaning ${city}`,
+  `root canal treatment ${city}`,
+  `dental implants ${city}`,
+  `cosmetic dentist ${city}`,
+  `teeth whitening ${city}`,
 ];
 
 export const treatmentKeywords: Record<string, string[]> = {
-  "dental-checkup": ["dental check-up Jaipur", "general dentist Jaipur", "preventive dentistry Jaipur"],
-  "teeth-cleaning": ["teeth cleaning Jaipur", "dental scaling Jaipur", "teeth polishing Jaipur"],
-  "root-canal": ["root canal Jaipur", "RCT Jaipur", "painless root canal Jaipur"],
-  "dental-implants": ["dental implants Jaipur", "tooth implant Jaipur", "implant dentist Jaipur"],
-  "teeth-whitening": ["teeth whitening Jaipur", "professional whitening Jaipur", "smile brightening Jaipur"],
-  veneers: ["veneer Jaipur", "porcelain veneers Jaipur", "cosmetic dentistry Jaipur"],
-  "crowns-bridges": ["dental crown Jaipur", "dental bridge Jaipur", "restorative dentistry Jaipur"],
-  "smile-makeover": ["smile makeover Jaipur", "smile design Jaipur", "cosmetic dentist Jaipur"],
+  "dental-checkup": [`dental check-up ${city}`, `general dentist ${city}`, `preventive dentistry ${city}`],
+  "teeth-cleaning": [`teeth cleaning ${city}`, `dental scaling ${city}`, `teeth polishing ${city}`],
+  "root-canal": [`root canal ${city}`, "RCT", `painless root canal ${city}`],
+  "dental-implants": [`dental implants ${city}`, `tooth implant ${city}`, `implant dentist ${city}`],
+  "teeth-whitening": [`teeth whitening ${city}`, `professional whitening ${city}`, `smile brightening ${city}`],
+  veneers: [`veneer ${city}`, `porcelain veneers ${city}`, `cosmetic dentistry ${city}`],
+  "crowns-bridges": [`dental crown ${city}`, `dental bridge ${city}`, `restorative dentistry ${city}`],
+  "smile-makeover": [`smile makeover ${city}`, `smile design ${city}`, `cosmetic dentist ${city}`],
 };
 
 export const serviceKeywords = [
-  "dental treatments Jaipur",
+  `dental treatments ${city}`,
   "dentist near me",
   "dental clinic near me",
 ];

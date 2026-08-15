@@ -12,7 +12,9 @@ const pexels = (id: number, w = 1600, h?: number) => {
 };
 
 export const media = {
-  hero: pexels(30518441, 2400, 1400),
+  heroWeb: "/images/hero-web.png",
+  heroMobile: "/images/hero-mobile.png",
+  hero: "/images/hero-web.png",
   clinicInterior: [
     pexels(6627353),
     pexels(7800666),

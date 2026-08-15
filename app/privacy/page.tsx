@@ -1,8 +1,9 @@
 import { legalMetadata, LegalPage } from "@/components/legal-page";
+import { site } from "@/lib/data/site";
 
 export const metadata = legalMetadata(
   "Privacy Policy",
-  "How Dentora collects, uses and protects your personal information.",
+  `How ${site.name} collects, uses and protects your personal information.`,
   "/privacy",
 );
 
@@ -11,7 +12,7 @@ export default function PrivacyPage() {
     <LegalPage
       title="Privacy Policy"
       updated="1 March 2026"
-      intro="This privacy policy explains how Dentora collects, uses and protects your personal information when you visit our website or contact our clinic in Jaipur. We keep this policy simple on purpose — no jargon, no surprises."
+      intro={`This privacy policy explains how ${site.name} collects, uses and protects your personal information when you visit our website or contact our clinic in ${site.location.city}. We keep this policy simple on purpose — no jargon, no surprises.`}
       sections={[
         {
           heading: "Information we collect",

@@ -1,22 +1,9 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { site, navLinks } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { treatments } from "@/lib/data/treatments";
 import { Container } from "@/components/ui/container";
-
-const clinicLinks = [
-  { label: "About", href: "/about" },
-  { label: "Doctors", href: "/#doctors" },
-  { label: "Reviews", href: "/#reviews" },
-  { label: "Contact", href: "/#book" },
-  { label: "FAQ", href: "/#faq" },
-];
-
-const legalLinks = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
-  { label: "Medical Disclaimer", href: "/disclaimer" },
-];
 
 export function Footer() {
   return (
@@ -27,10 +14,10 @@ export function Footer() {
           <div>
             <Link href="/" className="flex flex-col leading-none">
               <span className="text-xl font-extrabold tracking-[-0.02em] text-white">
-                DENTORA
+                {content.brand.wordmark}
               </span>
               <span className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.28em] text-teal">
-                Dental Studio · Jaipur
+                {content.brand.descriptor}
               </span>
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-[1.7] text-white/55">
@@ -39,9 +26,9 @@ export function Footer() {
           </div>
 
           {/* Treatments */}
-          <nav aria-label="Treatments">
+          <nav aria-label={content.footer.headings.treatments}>
             <h3 className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/40">
-              Treatments
+              {content.footer.headings.treatments}
             </h3>
             <ul className="mt-5 space-y-3">
               {treatments.map((t) => (
@@ -59,12 +46,12 @@ export function Footer() {
           </nav>
 
           {/* Clinic */}
-          <nav aria-label="Clinic">
+          <nav aria-label={content.footer.headings.clinic}>
             <h3 className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/40">
-              Clinic
+              {content.footer.headings.clinic}
             </h3>
             <ul className="mt-5 space-y-3">
-              {[...clinicLinks, ...navLinks].filter(
+              {[...content.footer.clinicLinks, ...navLinks].filter(
                 (link, i, arr) =>
                   arr.findIndex((l) => l.href === link.href) === i,
               ).map((link) => (
@@ -83,7 +70,7 @@ export function Footer() {
           {/* Jaipur */}
           <div>
             <h3 className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/40">
-              Jaipur
+              {content.footer.headings.city}
             </h3>
             <ul className="mt-5 space-y-4 text-sm text-white/75">
               <li className="flex items-start gap-3">
@@ -91,7 +78,7 @@ export function Footer() {
                 <span>
                   {site.location.address}
                   <br />
-                  {site.location.neighbourhood}, Jaipur
+                  {site.location.neighbourhood}, {site.location.city}
                 </span>
               </li>
               <li>
@@ -125,9 +112,9 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col gap-4 border-t border-white/10 py-8 text-[13px] text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Dentora Dental Clinic. All rights reserved.</p>
+          <p>{content.footer.copyright}</p>
           <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2">
-            {legalLinks.map((link) => (
+            {content.footer.legalLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

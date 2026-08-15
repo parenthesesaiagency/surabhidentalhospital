@@ -6,6 +6,8 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { treatments } from "@/lib/data/treatments";
+import { site } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { ease, cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -19,13 +21,13 @@ export function TreatmentShowcase() {
   const t = treatments[active];
 
   return (
-    <section className="bg-ink py-24 text-cream sm:py-32">
+    <section className="bg-ink py-16 text-cream sm:py-32">
       <Container>
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
-            <Eyebrow tone="dark">Treatments</Eyebrow>
+            <Eyebrow tone="dark">{content.treatmentsSection.eyebrow}</Eyebrow>
             <h2 className="mt-6 max-w-2xl text-[clamp(1.9rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-white">
-              The right care, chosen by you.
+              {content.treatmentsSection.heading}
             </h2>
           </div>
           <Button
@@ -34,7 +36,7 @@ export function TreatmentShowcase() {
             className="w-fit self-start text-white/85 hover:text-white md:self-auto"
             trackEvent="treatment_click"
           >
-            View all treatments
+            {content.treatmentsSection.viewAll}
           </Button>
         </div>
 
@@ -162,7 +164,7 @@ export function TreatmentShowcase() {
                       transform: "translate(-20%, -130%)",
                     }}
                   >
-                    View
+                    {content.treatmentsSection.viewBadge}
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </motion.span>
                 )}
@@ -186,9 +188,9 @@ export function TreatmentShowcase() {
                     data-track="treatment_click"
                     data-track-props={JSON.stringify({ treatment: t.slug })}
                     className="link-underline shrink-0 text-sm font-semibold text-teal"
-                    aria-label={`Learn more about ${t.name} in Jaipur`}
+                    aria-label={`${content.treatmentsSection.learnMore} about ${t.name} in ${site.location.city}`}
                   >
-                    Learn more
+                    {content.treatmentsSection.learnMore}
                   </Link>
                 </motion.div>
               </AnimatePresence>

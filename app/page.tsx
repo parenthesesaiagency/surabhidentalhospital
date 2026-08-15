@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { homeKeywords } from "@/lib/seo/keywords";
-import { site } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { Hero } from "@/components/hero/hero";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { Philosophy } from "@/components/sections/philosophy";
@@ -17,9 +17,8 @@ import { FinalCta } from "@/components/sections/final-cta";
 import { BookingSection } from "@/components/sections/booking-section";
 
 export const metadata: Metadata = buildMetadata({
-  title: `${site.name} — Modern Dental Clinic in Jaipur`,
-  description:
-    "Dentora is a modern dental clinic in Jaipur offering preventive, cosmetic and restorative dentistry in a calm, patient-first environment. Book your consultation today.",
+  title: content.home.title,
+  description: content.home.description,
   path: "/",
   keywords: homeKeywords,
 });

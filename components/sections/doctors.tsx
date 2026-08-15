@@ -1,23 +1,23 @@
 import Image from "next/image";
 import { doctors } from "@/lib/data/doctors";
+import { content } from "@/lib/data/content";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
+import { Lines } from "@/components/ui/lines";
 
 export function Doctors() {
   return (
-    <section id="doctors" className="bg-white py-24 sm:py-32">
+    <section id="doctors" className="bg-white py-16 sm:py-32">
       <Container>
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
             <Reveal>
-              <Eyebrow>Our Doctors</Eyebrow>
+              <Eyebrow>{content.doctors.eyebrow}</Eyebrow>
             </Reveal>
             <h2 className="mt-6 max-w-2xl text-[clamp(1.9rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-ink">
-              The team behind
-              <br />
-              your smile.
+              <Lines lines={content.doctors.headingLines} />
             </h2>
           </div>
           <Reveal delay={0.1}>
@@ -26,7 +26,7 @@ export function Doctors() {
               variant="outline"
               trackEvent="doctor_profile_click"
             >
-              About the clinic
+              {content.doctors.cta}
             </Button>
           </Reveal>
         </div>
@@ -38,7 +38,7 @@ export function Doctors() {
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
                   <Image
                     src={doctor.photo}
-                    alt={`Portrait of ${doctor.name} — placeholder, replace with verified photo`}
+                    alt={content.doctors.photoAlt(doctor.name)}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 ease-apple group-hover:scale-[1.04]"

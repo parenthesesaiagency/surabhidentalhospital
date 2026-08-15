@@ -10,6 +10,16 @@ import { site } from "@/lib/data/site";
 
 const url = site.url.replace(/\/$/, "");
 
+const areaServed = () => ({
+  "@type": "City" as const,
+  name: site.location.city,
+});
+
+const areaServedRegion = () => ({
+  "@type": "State" as const,
+  name: site.location.state,
+});
+
 function clinicAddress() {
   const hasAddress = site.location.address !== "[CLINIC ADDRESS]";
   return {
@@ -77,10 +87,7 @@ export function dentistSchema() {
         closes: "20:30",
       },
     ],
-    areaServed: [
-      { "@type": "City" as const, name: "Jaipur" },
-      { "@type": "State" as const, name: "Rajasthan" },
-    ],
+    areaServed: [areaServed(), areaServedRegion()],
     sameAs: [site.socials.instagram, site.socials.facebook].filter(Boolean),
   };
 }
@@ -116,6 +123,6 @@ export function treatmentSchema(t: Treatment) {
     image: t.image,
     url: `${url}/services/${t.slug}`,
     provider: { "@type": "Dentist" as const, name: site.legalName, url },
-    areaServed: { "@type": "City" as const, name: "Jaipur" },
+    areaServed: areaServed(),
   };
 }

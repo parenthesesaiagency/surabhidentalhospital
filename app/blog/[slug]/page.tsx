@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, CalendarDays, Clock3 } from "lucide-react";
 import { getPost, posts } from "@/lib/data/posts";
+import { site } from "@/lib/data/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/schema/jsonLd";
 import { Container } from "@/components/ui/container";
@@ -145,8 +146,8 @@ export default async function BlogPostPage({ params }: Props) {
               </h2>
               <p className="mt-2 text-sm leading-[1.7] text-ink/70">
                 These articles are general guidance — your dental health is
-                personal. Our team in Jaipur is happy to answer questions about
-                your own situation.
+                personal. Our team in {site.location.city} is happy to answer
+                questions about your own situation.
               </p>
               <div className="mt-6">
                 <Link

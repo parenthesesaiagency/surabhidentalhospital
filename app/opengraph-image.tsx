@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 
-export const alt = `${site.legalName} — Modern Dental Clinic in Jaipur`;
+export const alt = `${site.legalName} — ${content.clinicTitle}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,7 +36,7 @@ export default async function Image() {
               color: "#FFFFFF",
             }}
           >
-            D
+            {content.ogImage.mark}
           </span>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span
@@ -46,7 +47,7 @@ export default async function Image() {
                 color: "#FFFFFF",
               }}
             >
-              DENTORA
+              {content.brand.wordmark}
             </span>
             <span
               style={{
@@ -56,7 +57,7 @@ export default async function Image() {
                 color: "#0BA7A5",
               }}
             >
-              DENTAL STUDIO · JAIPUR
+              {content.brand.descriptor.toUpperCase()}
             </span>
           </div>
         </div>
@@ -70,9 +71,9 @@ export default async function Image() {
             maxWidth: "960px",
           }}
         >
-          Modern dentistry.
+          {content.ogImage.line1}
           <br />
-          Thoughtfully delivered.
+          {content.ogImage.line2}
         </span>
         <span
           style={{

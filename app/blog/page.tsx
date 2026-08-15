@@ -3,21 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { posts } from "@/lib/data/posts";
+import { site } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
+import { Lines } from "@/components/ui/lines";
 import { FinalCta } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Dental Journal",
-  description:
-    "Practical, medically responsible articles on dental health from the Dentora team in Jaipur — from cleaning routines to choosing the right treatment.",
+  title: content.blog.title,
+  description: content.blog.description,
   path: "/blog",
   keywords: [
     "dental blog",
     "oral health tips",
-    "dentist advice Jaipur",
+    `dentist advice ${site.location.city}`,
   ],
   type: "article",
 });
@@ -25,28 +27,25 @@ export const metadata: Metadata = buildMetadata({
 export default function BlogPage() {
   return (
     <>
-      <section className="bg-ink pb-16 pt-40 text-cream sm:pb-20 sm:pt-48">
+      <section className="bg-ink pb-16 pt-32 text-cream sm:pb-20 sm:pt-48">
         <Container>
           <Reveal>
-            <Eyebrow tone="dark">Journal</Eyebrow>
+            <Eyebrow tone="dark">{content.blog.heroEyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={0.06}>
             <h1 className="mt-6 max-w-3xl text-[clamp(2.2rem,5.5vw,4rem)] font-bold leading-[1.04] tracking-[-0.04em] text-white">
-              Dental health,
-              <br />
-              in plain language.
+              <Lines lines={content.blog.heroHeadingLines} />
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mt-6 max-w-xl text-base leading-[1.75] text-white/65 sm:text-lg">
-              Practical, honest guidance from our team — written to be useful,
-              not alarming.
+              {content.blog.heroBody}
             </p>
           </Reveal>
         </Container>
       </section>
 
-      <section className="py-20 sm:py-28">
+      <section className="py-14 sm:py-28">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => (
@@ -78,7 +77,7 @@ export default function BlogPage() {
                       {post.excerpt}
                     </p>
                     <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-teal-deep">
-                      Read article
+                      {content.blog.readMore}
                       <ArrowUpRight
                         className="h-4 w-4 transition-transform duration-500 ease-apple group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                         aria-hidden="true"

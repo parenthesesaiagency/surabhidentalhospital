@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check, ChevronRight } from "lucide-react";
 import { getTreatment, relatedTreatments, treatments } from "@/lib/data/treatments";
+import { site } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { treatmentKeywords } from "@/lib/seo/keywords";
 import { buildMetadata } from "@/lib/seo/metadata";
 import {
@@ -129,9 +131,9 @@ export default async function TreatmentPage({ params }: Props) {
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
             <Reveal>
               <div>
-                <Eyebrow>Overview</Eyebrow>
+                <Eyebrow>{content.treatmentPage.overview}</Eyebrow>
                 <h2 className="mt-6 text-[clamp(1.6rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-[-0.03em] text-ink">
-                  {t.name} at Dentora
+                  {t.name} at {site.name}
                 </h2>
                 <p className="mt-6 max-w-xl text-base leading-[1.8] text-muted">
                   {t.overview}
@@ -141,7 +143,7 @@ export default async function TreatmentPage({ params }: Props) {
             <Reveal delay={0.08}>
               <div className="rounded-[1.5rem] border border-line bg-white p-7 sm:p-9">
                 <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted">
-                  This may be right for you if…
+                  {content.treatmentPage.whoItsFor}
                 </h3>
                 <ul className="mt-5 space-y-3.5">
                   {t.whoItsFor.map((item) => (
@@ -166,7 +168,7 @@ export default async function TreatmentPage({ params }: Props) {
         <Container>
           <Reveal>
             <div className="max-w-2xl">
-              <Eyebrow>What to expect</Eyebrow>
+              <Eyebrow>{content.treatmentPage.whatToExpect}</Eyebrow>
               <h2 className="mt-6 text-[clamp(1.6rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-[-0.03em] text-ink">
                 The {t.name.toLowerCase()} journey
               </h2>
@@ -201,7 +203,7 @@ export default async function TreatmentPage({ params }: Props) {
             <Reveal>
               <div className="h-full rounded-[1.5rem] bg-mint p-8 sm:p-10">
                 <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-teal-deep">
-                  Benefits
+                  {content.treatmentPage.benefits}
                 </h3>
                 <ul className="mt-5 space-y-3.5">
                   {t.benefits.map((b) => (
@@ -221,7 +223,7 @@ export default async function TreatmentPage({ params }: Props) {
               <div className="flex h-full flex-col justify-between gap-6 rounded-[1.5rem] border border-line bg-white p-8 sm:p-10">
                 <div>
                   <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted">
-                    Recovery & aftercare
+                    {content.treatmentPage.recovery}
                   </h3>
                   <p className="mt-5 text-[15px] leading-[1.75] text-ink/80">
                     {t.recovery}
@@ -233,14 +235,14 @@ export default async function TreatmentPage({ params }: Props) {
                     trackEvent="appointment_click"
                     trackProps={{ treatment: t.slug }}
                   >
-                    Book a Consultation
+                    {content.treatmentPage.bookConsultation}
                   </Button>
                   <Button
                     href="/services"
                     variant="outline"
                     icon={false}
                   >
-                    View all treatments
+                    {content.treatmentPage.viewAll}
                   </Button>
                 </div>
               </div>
@@ -255,7 +257,7 @@ export default async function TreatmentPage({ params }: Props) {
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
             <Reveal>
               <div className="lg:sticky lg:top-28 lg:self-start">
-                <Eyebrow>FAQ</Eyebrow>
+                <Eyebrow>{content.treatmentPage.faq}</Eyebrow>
                 <h2 className="mt-6 text-[clamp(1.6rem,3.4vw,2.5rem)] font-bold leading-[1.1] tracking-[-0.03em] text-ink">
                   {t.name} questions, answered
                 </h2>
@@ -288,9 +290,9 @@ export default async function TreatmentPage({ params }: Props) {
             <Reveal>
               <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                 <div>
-                  <Eyebrow>Explore more</Eyebrow>
+                  <Eyebrow>{content.treatmentPage.relatedEyebrow}</Eyebrow>
                   <h2 className="mt-4 text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-[1.1] tracking-[-0.03em] text-ink">
-                    You may also consider
+                    {content.treatmentPage.relatedHeading}
                   </h2>
                 </div>
               </div>

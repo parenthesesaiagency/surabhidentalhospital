@@ -3,9 +3,11 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronsLeftRight } from "lucide-react";
+import { content } from "@/lib/data/content";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
+import { Lines } from "@/components/ui/lines";
 
 /**
  * Before / After slider.
@@ -40,17 +42,15 @@ export function BeforeAfter() {
   const slide = slides[0];
 
   return (
-    <section className="bg-white py-24 sm:py-32">
+    <section className="bg-white py-16 sm:py-32">
       <Container>
         <div className="text-center">
           <Reveal>
-            <Eyebrow>Real Results</Eyebrow>
+            <Eyebrow>{content.beforeAfter.eyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="mx-auto mt-6 max-w-2xl text-[clamp(1.9rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-ink">
-              See the difference,
-              <br />
-              honestly presented.
+              <Lines lines={content.beforeAfter.headingLines} />
             </h2>
           </Reveal>
         </div>
@@ -108,10 +108,10 @@ export function BeforeAfter() {
 
               {/* Labels */}
               <span className="absolute left-5 top-5 rounded-full bg-ink/70 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-                Before
+                {content.beforeAfter.beforeLabel}
               </span>
               <span className="absolute right-5 top-5 rounded-full bg-teal px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white">
-                After
+                {content.beforeAfter.afterLabel}
               </span>
 
               {/* Keyboard accessible range */}
@@ -126,7 +126,7 @@ export function BeforeAfter() {
               />
             </div>
             <p className="mt-4 text-center text-xs text-muted">
-              {slide.treatment} — Individual results vary.
+              {slide.treatment} — {content.beforeAfter.resultsNote}
             </p>
           </div>
         </Reveal>

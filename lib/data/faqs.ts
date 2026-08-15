@@ -1,3 +1,9 @@
+import { site } from "@/lib/data/site";
+
+const brand = site.name;
+const city = site.location.city;
+const neighbourhood = site.location.neighbourhood;
+
 export type Faq = { q: string; a: string };
 
 export const faqs: Faq[] = [
@@ -6,8 +12,8 @@ export const faqs: Faq[] = [
     a: "The fastest way is to call or WhatsApp our team, or use the Book Appointment button — we'll confirm a time that suits you, usually within the same day.",
   },
   {
-    q: "Where is Dentora located in Jaipur?",
-    a: "Dentora is located in [NEIGHBOURHOOD], Jaipur. Use the Get Directions button for the exact location and details on parking.",
+    q: `Where is ${brand} located in ${city}?`,
+    a: `${brand} is located in ${neighbourhood}, ${city}. Use the Get Directions button for the exact location and details on parking.`,
   },
   {
     q: "Do you accept new patients?",
@@ -19,7 +25,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "How long does a root canal take?",
-    a: "Most root canals at Dentora are completed in a single visit of 60–90 minutes. Complex cases may need two visits — you'll know before we begin.",
+    a: `Most root canals at ${brand} are completed in a single visit of 60–90 minutes. Complex cases may need two visits — you'll know before we begin.`,
   },
   {
     q: "How much does a dental implant cost?",

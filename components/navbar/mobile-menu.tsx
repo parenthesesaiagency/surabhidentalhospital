@@ -5,8 +5,10 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { X, Phone, MessageCircle } from "lucide-react";
 import { site, navLinks } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { ease } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useBooking } from "@/components/booking/booking-provider";
 
 export function MobileMenu({
   open,
@@ -16,6 +18,7 @@ export function MobileMenu({
   onClose: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const { open: openBooking } = useBooking();
 
   useEffect(() => {
     if (!open) return;
@@ -45,14 +48,19 @@ export function MobileMenu({
           aria-label="Menu"
         >
           <div className="flex items-center justify-between px-5 pt-5">
-            <div className="flex flex-col leading-none">
+            <Link
+              href="/"
+              onClick={onClose}
+              className="flex flex-col leading-none"
+              aria-label={content.brand.ariaLabel}
+            >
               <span className="text-lg font-extrabold tracking-[-0.02em] text-ink">
-                DENTORA
+                {content.brand.wordmark}
               </span>
               <span className="mt-1 text-[8.5px] font-semibold uppercase tracking-[0.28em] text-teal-deep">
-                Dental Studio · Jaipur
+                {content.brand.descriptor}
               </span>
-            </div>
+            </Link>
             <button
               ref={closeRef}
               type="button"
@@ -65,8 +73,10 @@ export function MobileMenu({
           </div>
 
           <nav className="flex flex-1 flex-col justify-center gap-1 px-6">
-            {[...navLinks, { label: "Book Appointment", href: "/#book" }].map(
-              (link, i) => (
+            {[...navLinks, { label: content.nav.bookCta, href: "/#book" }].map(
+              (link, i) => {
+                const isBook = link.href === "/#book";
+                return (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 32 }}
@@ -74,6 +84,24 @@ export function MobileMenu({
                   exit={{ opacity: 0, y: 16 }}
                   transition={{ duration: 0.6, ease, delay: 0.08 + i * 0.07 }}
                 >
+                  {isBook ? (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onClose();
+                        openBooking();
+                      }}
+                      data-track="nav_click"
+                      className="group flex w-full items-baseline justify-between border-b border-line/70 py-5 text-left"
+                    >
+                      <span className="text-3xl font-bold tracking-[-0.03em] text-ink transition-colors group-hover:text-teal-deep">
+                        {link.label}
+                      </span>
+                      <span className="text-xs font-semibold tracking-widest text-muted">
+                        0{i + 1}
+                      </span>
+                    </button>
+                  ) : (
                   <Link
                     href={link.href}
                     onClick={onClose}
@@ -87,8 +115,10 @@ export function MobileMenu({
                       0{i + 1}
                     </span>
                   </Link>
+                  )}
                 </motion.div>
-              ),
+                );
+              },
             )}
           </nav>
 
@@ -120,12 +150,14 @@ export function MobileMenu({
               </a>
             </div>
             <Button
-              href="/#book"
-              onClick={onClose}
+              onClick={() => {
+                onClose();
+                openBooking();
+              }}
               className="w-full justify-center"
               trackEvent="appointment_click"
             >
-              Book Appointment
+              {content.nav.bookCta}
             </Button>
           </motion.div>
         </motion.div>

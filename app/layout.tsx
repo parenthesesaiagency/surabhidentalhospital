@@ -6,10 +6,12 @@ import {
   SITE_NAME,
   SITE_DESCRIPTION,
 } from "@/lib/seo/metadata";
+import { content } from "@/lib/data/content";
 import { organizationSchema, websiteSchema } from "@/lib/schema/jsonLd";
 import { Navbar } from "@/components/navbar/navbar";
 import { Footer } from "@/components/footer/footer";
 import { MobileActionBar } from "@/components/footer/mobile-action-bar";
+import { BookingProvider } from "@/components/booking/booking-provider";
 import { Tracker } from "@/components/analytics/tracker";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -21,13 +23,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Modern Dental Clinic in Jaipur`,
+    default: `${SITE_NAME} — ${content.clinicTitle}`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
-    title: `${SITE_NAME} — Modern Dental Clinic in Jaipur`,
+    title: `${SITE_NAME} — ${content.clinicTitle}`,
     description: SITE_DESCRIPTION,
     url: "/",
     siteName: SITE_NAME,
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Modern Dental Clinic in Jaipur`,
+    title: `${SITE_NAME} — ${content.clinicTitle}`,
     description: SITE_DESCRIPTION,
     images: ["/opengraph-image"],
   },
@@ -66,16 +68,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body>
-        <a
-          href="#main"
-          className="sr-only z-50 rounded-full bg-teal px-5 py-2 text-sm font-bold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
-        >
-          Skip to content
-        </a>
-        <Navbar />
-        <main id="main">{children}</main>
-        <Footer />
-        <MobileActionBar />
+        <BookingProvider>
+          <a
+            href="#main"
+            className="sr-only z-50 rounded-full bg-teal px-5 py-2 text-sm font-bold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          >
+            Skip to content
+          </a>
+          <Navbar />
+          <main id="main">{children}</main>
+          <Footer />
+          <MobileActionBar />
+        </BookingProvider>
         <Tracker />
       </body>
     </html>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { Phone, Menu } from "lucide-react";
 import { site, navLinks } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { cn } from "@/lib/utils";
 import { ease } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -41,8 +42,13 @@ export function Navbar() {
             {/* Logo */}
             <Link
               href="/"
+              onClick={() => {
+                if (window.location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="flex flex-col leading-none"
-              aria-label="Dentora — home"
+              aria-label={content.brand.ariaLabel}
             >
               <span
                 className={cn(
@@ -50,11 +56,11 @@ export function Navbar() {
                   overDark ? "text-white" : "text-ink",
                 )}
               >
-                DENTORA
+                {content.brand.wordmark}
               </span>
               <span className="mt-1 hidden text-[8px] font-semibold uppercase tracking-[0.28em] sm:block sm:text-[9px]">
                 <span className={cn(overDark ? "text-teal-100" : "text-ink")}>
-                  Dental Studio · Jaipur
+                  {content.brand.descriptor}
                 </span>
               </span>
             </Link>
@@ -103,7 +109,7 @@ export function Navbar() {
                 trackEvent="appointment_click"
                 className="hidden sm:inline-flex"
               >
-                Book Appointment
+                {content.nav.bookCta}
               </Button>
 
               {/* Mobile menu trigger */}

@@ -17,7 +17,7 @@ export function MaskedText({
   delay = 0,
 }: {
   text: string;
-  highlight?: string[];
+  highlight?: readonly string[];
   className?: string;
   stagger?: number;
   delay?: number;

@@ -1,10 +1,12 @@
 import { Quote } from "lucide-react";
 import { reviews } from "@/lib/data/reviews";
+import { content } from "@/lib/data/content";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { Stars } from "@/components/ui/stars";
 import { Marquee } from "@/components/ui/marquee";
+import { Lines } from "@/components/ui/lines";
 
 function GoogleIcon({ className }: { className?: string }) {
   return (
@@ -34,17 +36,15 @@ export function Reviews() {
   const rest = reviews.filter((r) => r !== featured);
 
   return (
-    <section id="reviews" className="overflow-hidden py-24 sm:py-32">
+    <section id="reviews" className="overflow-hidden py-16 sm:py-32">
       <Container>
         <div className="flex flex-col items-center text-center">
           <Reveal>
-            <Eyebrow>Reviews</Eyebrow>
+            <Eyebrow>{content.reviews.eyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-6 max-w-3xl text-[clamp(1.9rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-ink">
-              Trusted by patients
-              <br />
-              across Jaipur.
+              <Lines lines={content.reviews.headingLines} />
             </h2>
           </Reveal>
         </div>
@@ -59,7 +59,7 @@ export function Reviews() {
               <Stars size={18} />
               <span className="flex items-center gap-2 rounded-full bg-mint px-3 py-1.5 text-xs font-semibold text-teal-deep">
                 <GoogleIcon className="h-4 w-4" />
-                Google Review
+                {content.reviews.googleLabel}
               </span>
             </div>
             <blockquote className="mt-6 text-lg leading-[1.7] text-ink sm:text-xl">
@@ -73,7 +73,7 @@ export function Reviews() {
                 <p className="text-sm font-bold text-ink">{featured.name}</p>
                 <p className="text-xs text-muted">
                   {featured.treatment ? `${featured.treatment} · ` : ""}
-                  Verified patient
+                  {content.reviews.verifiedLabel}
                 </p>
               </div>
             </figcaption>
@@ -83,7 +83,7 @@ export function Reviews() {
 
       {/* Gentle horizontal marquee */}
       <div className="mt-16">
-        <Marquee duration={48} ariaLabel="More patient reviews">
+        <Marquee duration={48} ariaLabel={content.reviews.marqueeAria}>
           {[...rest, ...rest].map((review, i) => (
             <figure
               key={`${review.name}-${i}`}

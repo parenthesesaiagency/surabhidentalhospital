@@ -1,10 +1,10 @@
-import { trustStrip } from "@/lib/data/site";
+import { trustStrip, site } from "@/lib/data/site";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 
 export function TrustStrip() {
   return (
-    <section className="border-b border-line bg-white" aria-label="Why patients choose Dentora">
+    <section className="border-b border-line bg-white" aria-label={`Why patients choose ${site.name}`}>
       <Container>
         <Reveal>
           <ul className="flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-7">

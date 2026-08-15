@@ -1,32 +1,31 @@
 import Image from "next/image";
 import { MapPin, Clock, Phone, Car } from "lucide-react";
 import { site } from "@/lib/data/site";
+import { content } from "@/lib/data/content";
 import { media } from "@/lib/media";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
+import { BookButton } from "@/components/booking/book-button";
+import { Lines } from "@/components/ui/lines";
 
 export function JaipurSection() {
   return (
-    <section id="location" className="py-24 sm:py-32">
+    <section id="location" className="py-16 sm:py-32">
       <Container>
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Copy + details */}
           <div>
             <Reveal>
-              <Eyebrow>Dentora · Jaipur</Eyebrow>
+              <Eyebrow>{content.jaipur.eyebrow}</Eyebrow>
             </Reveal>
             <h2 className="mt-6 max-w-xl text-[clamp(1.9rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-ink">
-              Modern dentistry,
-              <br />
-              close to home.
+              <Lines lines={content.jaipur.headingLines} />
             </h2>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-lg text-base leading-[1.75] text-muted sm:text-lg">
-                Located in Jaipur, Dentora brings advanced dental care into a
-                calm, comfortable environment designed around the patient
-                experience — your dentist in Jaipur without the usual stress.
+                {content.jaipur.body}
               </p>
             </Reveal>
 
@@ -36,7 +35,7 @@ export function JaipurSection() {
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-teal-deep" aria-hidden="true" />
                   <div>
                     <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-                      Address
+                      {content.jaipur.labels.address}
                     </dt>
                     <dd className="mt-1 text-sm font-medium text-ink">
                       {site.location.address}
@@ -48,7 +47,7 @@ export function JaipurSection() {
                   <Clock className="mt-0.5 h-5 w-5 shrink-0 text-teal-deep" aria-hidden="true" />
                   <div>
                     <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-                      Opening Hours
+                      {content.jaipur.labels.hours}
                     </dt>
                     <dd className="mt-1 space-y-0.5 text-sm font-medium text-ink">
                       {site.hours.map((h) => (
@@ -63,7 +62,7 @@ export function JaipurSection() {
                   <Phone className="mt-0.5 h-5 w-5 shrink-0 text-teal-deep" aria-hidden="true" />
                   <div>
                     <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-                      Call or WhatsApp
+                      {content.jaipur.labels.contact}
                     </dt>
                     <dd className="mt-1 text-sm font-medium text-ink">
                       {site.contact.phoneDisplay}
@@ -74,10 +73,10 @@ export function JaipurSection() {
                   <Car className="mt-0.5 h-5 w-5 shrink-0 text-teal-deep" aria-hidden="true" />
                   <div>
                     <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-                      Parking
+                      {content.jaipur.labels.parking}
                     </dt>
                     <dd className="mt-1 text-sm font-medium text-muted">
-                      [PARKING INFORMATION]
+                      {content.jaipur.parkingInfo}
                     </dd>
                   </div>
                 </div>
@@ -91,15 +90,15 @@ export function JaipurSection() {
                   external
                   trackEvent="map_click"
                 >
-                  Get Directions
+                  {content.jaipur.directionsCta}
                 </Button>
-                <Button
+                <BookButton
                   href="/#book"
                   variant="outline"
                   trackEvent="appointment_click"
                 >
-                  Book Appointment
-                </Button>
+                  {content.jaipur.bookCta}
+                </BookButton>
               </div>
             </Reveal>
           </div>
@@ -110,7 +109,7 @@ export function JaipurSection() {
               <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem]">
                 <Image
                   src={media.jaipur.clinic}
-                  alt="Inside the calm, modern Dentora dental clinic in Jaipur"
+                  alt={content.jaipur.imageAlt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
@@ -127,9 +126,9 @@ export function JaipurSection() {
                   <MapPin className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <div>
-                  <p className="text-sm font-bold text-ink">Dentora</p>
+                  <p className="text-sm font-bold text-ink">{site.name}</p>
                   <p className="text-xs text-muted">
-                    {site.location.neighbourhood} · Jaipur
+                    {content.jaipur.floatingCardSub}
                   </p>
                 </div>
               </div>

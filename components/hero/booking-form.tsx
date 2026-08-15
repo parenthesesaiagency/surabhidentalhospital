@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { cn, ease } from "@/lib/utils";
+import { content } from "@/lib/data/content";
 
 const inputBase =
   "w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder:text-white/40 focus:border-teal/70 focus:bg-white/15";
@@ -20,7 +21,11 @@ const errorBase = "mt-1.5 text-xs font-medium text-amber-300";
 
 type Errors = { name?: string; phone?: string; date?: string };
 
-export function BookingForm() {
+export function BookingForm({
+  idPrefix = "booking",
+}: {
+  idPrefix?: string;
+}) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
@@ -32,16 +37,16 @@ export function BookingForm() {
   function validate(): boolean {
     const next: Errors = {};
     if (!name.trim()) {
-      next.name = "Please enter your name.";
+      next.name = content.bookingForm.errors.name;
     }
     const digits = phone.replace(/\s+/g, "");
     if (!/^[6-9]\d{9}$/.test(digits)) {
-      next.phone = "Enter a valid 10-digit mobile number.";
+      next.phone = content.bookingForm.errors.phone;
     }
     if (!date) {
-      next.date = "Please pick a date.";
+      next.date = content.bookingForm.errors.dateRequired;
     } else if (date < today) {
-      next.date = "Date can't be in the past.";
+      next.date = content.bookingForm.errors.datePast;
     }
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -76,28 +81,25 @@ export function BookingForm() {
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
         <h3 className="mt-6 text-2xl font-bold tracking-[-0.02em] text-white">
-          Request received!
+          {content.bookingForm.successHeading}
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-white/75">
-          Thank you, <span className="font-semibold text-white">{name}</span>.
-          We&apos;ll call{" "}
-          <span className="font-semibold text-white">+91 {phone}</span> to
-          confirm your visit on{" "}
-          <span className="font-semibold text-white">
-            {new Date(`${date}T00:00:00`).toLocaleDateString("en-IN", {
+          {content.bookingForm.successBody(
+            name,
+            phone,
+            new Date(`${date}T00:00:00`).toLocaleDateString("en-IN", {
               weekday: "long",
               day: "numeric",
               month: "long",
               year: "numeric",
-            })}
-          </span>
-          .
+            }),
+          )}
         </p>
         <button
           onClick={reset}
           className="mt-8 w-full rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-white/60 hover:bg-white/10"
         >
-          Book another
+          {content.bookingForm.bookAnother}
         </button>
       </motion.div>
     );
@@ -110,19 +112,19 @@ export function BookingForm() {
       className="rounded-[1.5rem] border border-white/20 bg-white/10 p-7 backdrop-blur-xl sm:p-8"
     >
       <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-teal">
-        Book an Appointment
+        {content.bookingForm.eyebrow}
       </p>
       <h3 className="mt-2 text-2xl font-bold tracking-[-0.02em] text-white">
-        Reserve your visit
+        {content.bookingForm.heading}
       </h3>
       <p className="mt-1.5 text-sm text-white/60">
-        Fill in your details and we&apos;ll confirm by phone.
+        {content.bookingForm.body}
       </p>
 
       <div className="mt-7 space-y-5">
         <div>
-          <label htmlFor="booking-name" className={labelBase}>
-            Full name
+          <label htmlFor={`${idPrefix}-name`} className={labelBase}>
+            {content.bookingForm.labels.name}
           </label>
           <div className="relative">
             <User
@@ -130,7 +132,7 @@ export function BookingForm() {
               aria-hidden="true"
             />
             <input
-              id="booking-name"
+              id={`${idPrefix}-name`}
               name="name"
               type="text"
               autoComplete="name"
@@ -139,7 +141,7 @@ export function BookingForm() {
                 setName(e.target.value);
                 if (errors.name) setErrors({ ...errors, name: undefined });
               }}
-              placeholder="e.g. Aarav Sharma"
+              placeholder={content.bookingForm.placeholders.name}
               className={cn(inputBase, "pl-11")}
             />
           </div>
@@ -147,19 +149,19 @@ export function BookingForm() {
         </div>
 
         <div>
-          <label htmlFor="booking-phone" className={labelBase}>
-            Mobile number
+          <label htmlFor={`${idPrefix}-phone`} className={labelBase}>
+            {content.bookingForm.labels.phone}
           </label>
           <div className="relative">
             <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-white/60">
-              +91
+              {content.bookingForm.phoneCode}
             </span>
             <Phone
               className="pointer-events-none absolute left-12 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40"
               aria-hidden="true"
             />
             <input
-              id="booking-phone"
+              id={`${idPrefix}-phone`}
               name="phone"
               type="tel"
               inputMode="numeric"
@@ -170,7 +172,7 @@ export function BookingForm() {
                 setPhone(e.target.value.replace(/\D/g, "").slice(0, 10));
                 if (errors.phone) setErrors({ ...errors, phone: undefined });
               }}
-              placeholder="98765 43210"
+              placeholder={content.bookingForm.placeholders.phone}
               className={cn(inputBase, "pl-[4.5rem]")}
             />
           </div>
@@ -178,8 +180,8 @@ export function BookingForm() {
         </div>
 
         <div>
-          <label htmlFor="booking-date" className={labelBase}>
-            Preferred date
+          <label htmlFor={`${idPrefix}-date`} className={labelBase}>
+            {content.bookingForm.labels.date}
           </label>
           <div className="relative">
             <CalendarDays
@@ -187,7 +189,7 @@ export function BookingForm() {
               aria-hidden="true"
             />
             <input
-              id="booking-date"
+              id={`${idPrefix}-date`}
               name="date"
               type="date"
               min={today}
@@ -208,10 +210,10 @@ export function BookingForm() {
         data-track="appointment_submit"
         className="mt-8 w-full rounded-full bg-white px-6 py-3.5 text-sm font-bold text-ink transition-all duration-300 ease-apple hover:bg-cream active:scale-[0.98]"
       >
-        Confirm Booking
+        {content.bookingForm.submit}
       </button>
       <p className="mt-4 text-center text-[11px] leading-relaxed text-white/45">
-        No payment needed today — we&apos;ll call you to confirm.
+        {content.bookingForm.footnote}
       </p>
     </form>
   );
