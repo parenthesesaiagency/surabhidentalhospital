@@ -115,12 +115,12 @@ export function Hero() {
               className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
               <Button
-                href="/#book"
+                href="/#doctors"
                 variant="white"
                 size="lg"
-                trackEvent="appointment_click"
+                trackEvent="doctors_click"
               >
-                Book an Appointment
+                Meet Our Doctors
               </Button>
               <Button
                 href="/services"

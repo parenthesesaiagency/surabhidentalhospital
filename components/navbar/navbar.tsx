@@ -52,8 +52,10 @@ export function Navbar() {
               >
                 DENTORA
               </span>
-              <span className="mt-1 hidden text-[8px] font-semibold uppercase tracking-[0.28em] text-teal-100 sm:block sm:text-[9px]">
-                Dental Studio · Jaipur
+              <span className="mt-1 hidden text-[8px] font-semibold uppercase tracking-[0.28em] sm:block sm:text-[9px]">
+                <span className={cn(overDark ? "text-teal-100" : "text-ink")}>
+                  Dental Studio · Jaipur
+                </span>
               </span>
             </Link>
 
