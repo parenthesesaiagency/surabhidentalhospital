@@ -8,7 +8,7 @@ const clinicLinks = [
   { label: "About", href: "/about" },
   { label: "Doctors", href: "/#doctors" },
   { label: "Reviews", href: "/#reviews" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/#book" },
   { label: "FAQ", href: "/#faq" },
 ];
 

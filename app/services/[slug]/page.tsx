@@ -229,7 +229,7 @@ export default async function TreatmentPage({ params }: Props) {
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <Button
-                    href="/contact"
+                    href="/#book"
                     trackEvent="appointment_click"
                     trackProps={{ treatment: t.slug }}
                   >

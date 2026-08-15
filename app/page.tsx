@@ -14,6 +14,7 @@ import { BeforeAfter } from "@/components/sections/before-after";
 import { JaipurSection } from "@/components/sections/jaipur-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { FinalCta } from "@/components/sections/final-cta";
+import { BookingSection } from "@/components/sections/booking-section";
 
 export const metadata: Metadata = buildMetadata({
   title: `${site.name} — Modern Dental Clinic in Jaipur`,
@@ -38,6 +39,7 @@ export default function HomePage() {
       <JaipurSection />
       <FaqSection />
       <FinalCta />
+      <BookingSection />
     </>
   );
 }

@@ -115,7 +115,7 @@ export function Hero() {
               className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
               <Button
-                href="/contact"
+                href="/#book"
                 variant="white"
                 size="lg"
                 trackEvent="appointment_click"

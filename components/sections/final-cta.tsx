@@ -29,7 +29,7 @@ export function FinalCta() {
           <Reveal delay={0.18}>
             <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
               <Button
-                href="/contact"
+                href="/#book"
                 size="lg"
                 trackEvent="appointment_click"
               >

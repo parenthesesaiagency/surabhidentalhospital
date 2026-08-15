@@ -94,7 +94,7 @@ export function JaipurSection() {
                   Get Directions
                 </Button>
                 <Button
-                  href="/contact"
+                  href="/#book"
                   variant="outline"
                   trackEvent="appointment_click"
                 >

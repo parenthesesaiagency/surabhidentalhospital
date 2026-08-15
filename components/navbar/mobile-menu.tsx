@@ -65,7 +65,7 @@ export function MobileMenu({
           </div>
 
           <nav className="flex flex-1 flex-col justify-center gap-1 px-6">
-            {[...navLinks, { label: "Contact", href: "/contact" }].map(
+            {[...navLinks, { label: "Book Appointment", href: "/#book" }].map(
               (link, i) => (
                 <motion.div
                   key={link.href}
@@ -120,7 +120,7 @@ export function MobileMenu({
               </a>
             </div>
             <Button
-              href="/contact"
+              href="/#book"
               onClick={onClose}
               className="w-full justify-center"
               trackEvent="appointment_click"

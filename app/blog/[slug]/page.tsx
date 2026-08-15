@@ -150,7 +150,7 @@ export default async function BlogPostPage({ params }: Props) {
               </p>
               <div className="mt-6">
                 <Link
-                  href="/contact"
+                  href="/#book"
                   data-track="appointment_click"
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-cream transition-all duration-500 ease-apple hover:bg-ink-soft active:scale-[0.98]"
                 >

@@ -95,7 +95,7 @@ export function Navbar() {
                 {site.contact.phoneDisplay}
               </a>
               <Button
-                href="/contact"
+                href="/#book"
                 size="sm"
                 variant={overDark ? "white" : "primary"}
                 trackEvent="appointment_click"

@@ -27,7 +27,7 @@ export function FaqSection() {
             </Reveal>
             <Reveal delay={0.16}>
               <Button
-                href="/contact"
+                href="/#book"
                 variant="outline"
                 className="mt-8"
                 trackEvent="appointment_click"

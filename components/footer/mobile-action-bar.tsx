@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Phone, MessageCircle, CalendarCheck } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/lib/data/site";
@@ -61,14 +62,14 @@ export function MobileActionBar() {
             {a.label}
           </a>
         ))}
-        <a
-          href="/contact"
+        <Link
+          href="/#book"
           data-track="appointment_click"
           className="flex min-h-14 flex-[1.35] items-center justify-center gap-2 rounded-full bg-teal text-sm font-bold text-white shadow-[0_16px_40px_-12px_rgba(11,167,165,0.55)] transition-transform duration-500 ease-apple active:scale-[0.97]"
         >
           <CalendarCheck className="h-4.5 w-4.5" aria-hidden="true" />
           Book
-        </a>
+        </Link>
       </div>
     </motion.nav>
   );
