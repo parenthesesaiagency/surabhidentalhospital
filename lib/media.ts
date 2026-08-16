@@ -28,11 +28,14 @@ export const media = {
     // PLACEHOLDER — replace with a Jaipur landmark or real clinic exterior.
     landmark: pexels(17911339, 1200, 1500),
   },
+  // PLACEHOLDER — dentist portraits, replaced with real team photography at
+  // launch. Chosen for portrait framing and no visible third-party clinic
+  // branding; keep both criteria if these are swapped for other stock.
   doctors: [
-    pexels(14624608, 900, 1100),
-    pexels(31071253, 900, 1100),
-    pexels(8327633, 900, 1100),
-    pexels(8413334, 900, 1100),
+    pexels(31043312, 900, 1100),
+    pexels(5355862, 900, 1100),
+    pexels(20596946, 900, 1100),
+    pexels(37458147, 900, 1100),
   ],
   journey: [
     pexels(3952124, 1600, 1200),
