@@ -52,7 +52,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story + image */}
-      <section className="py-14 sm:py-28">
+      <section className="pt-7 pb-14 sm:pt-14 sm:pb-28">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <Reveal>
@@ -92,7 +92,7 @@ export default function AboutPage() {
       </section>
 
       {/* Interior gallery */}
-      <section className="bg-white py-14 sm:py-28">
+      <section className="bg-white pt-7 pb-14 sm:pt-14 sm:pb-28">
         <Container>
           <Reveal>
             <div className="max-w-2xl">
@@ -122,7 +122,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-14 sm:py-28">
+      <section className="pt-7 pb-14 sm:pt-14 sm:pb-28">
         <Container>
           <Reveal>
             <div className="max-w-2xl">

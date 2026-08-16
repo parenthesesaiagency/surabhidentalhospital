@@ -17,7 +17,7 @@ export function BookingSection() {
   return (
     <section
       id="book"
-      className="overflow-hidden bg-cream py-16 sm:py-32"
+      className="overflow-hidden bg-cream pt-8 pb-16 sm:pt-16 sm:pb-32"
       aria-label={content.booking.sectionAria}
     >
       <Container>

@@ -42,7 +42,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Treatment grid */}
-      <section className="pb-16 pt-12 sm:pb-32 sm:pt-24">
+      <section className="pb-16 pt-8 sm:pb-32 sm:pt-16">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {treatments.map((t, i) => (

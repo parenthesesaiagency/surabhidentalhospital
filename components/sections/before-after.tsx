@@ -42,7 +42,7 @@ export function BeforeAfter() {
   const slide = slides[0];
 
   return (
-    <section className="bg-white py-16 sm:py-32">
+    <section className="bg-white pt-8 pb-16 sm:pt-16 sm:pb-32">
       <Container>
         <div className="text-center">
           <Reveal>

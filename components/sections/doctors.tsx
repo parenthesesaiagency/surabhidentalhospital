@@ -9,7 +9,7 @@ import { Lines } from "@/components/ui/lines";
 
 export function Doctors() {
   return (
-    <section id="doctors" className="bg-white py-16 sm:py-32">
+    <section id="doctors" className="bg-white pt-8 pb-16 sm:pt-16 sm:pb-32">
       <Container>
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>

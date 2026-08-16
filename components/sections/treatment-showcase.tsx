@@ -21,7 +21,7 @@ export function TreatmentShowcase() {
   const t = treatments[active];
 
   return (
-    <section className="bg-ink py-16 text-cream sm:py-32">
+    <section className="bg-ink pt-8 pb-16 text-cream sm:pt-16 sm:pb-32">
       <Container>
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>

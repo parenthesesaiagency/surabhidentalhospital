@@ -45,7 +45,7 @@ export default function BlogPage() {
         </Container>
       </section>
 
-      <section className="py-14 sm:py-28">
+      <section className="pt-7 pb-14 sm:pt-14 sm:pb-28">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => (

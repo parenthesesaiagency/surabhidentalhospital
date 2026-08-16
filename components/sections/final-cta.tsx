@@ -13,7 +13,7 @@ import { useBooking } from "@/components/booking/booking-provider";
 export function FinalCta() {
   const { open: openBooking } = useBooking();
   return (
-    <section className="overflow-hidden bg-mint py-16 sm:py-32">
+    <section className="overflow-hidden bg-mint pt-8 pb-16 sm:pt-16 sm:pb-32">
       <Container>
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <Reveal>

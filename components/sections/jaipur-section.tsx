@@ -12,7 +12,7 @@ import { Lines } from "@/components/ui/lines";
 
 export function JaipurSection() {
   return (
-    <section id="location" className="py-16 sm:py-32">
+    <section id="location" className="pt-8 pb-16 sm:pt-16 sm:pb-32">
       <Container>
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Copy + details */}

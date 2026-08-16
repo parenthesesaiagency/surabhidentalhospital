@@ -6,7 +6,7 @@ import { content } from "@/lib/data/content";
 
 export function WhyDentora() {
   return (
-    <section id="why-dentora" className="py-16 sm:py-32">
+    <section id="why-dentora" className="pt-8 pb-16 sm:pt-16 sm:pb-32">
       <Container>
         <Reveal>
           <Eyebrow>{content.why.eyebrow}</Eyebrow>

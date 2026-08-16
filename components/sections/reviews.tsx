@@ -36,7 +36,7 @@ export function Reviews() {
   const rest = reviews.filter((r) => r !== featured);
 
   return (
-    <section id="reviews" className="overflow-hidden py-16 sm:py-32">
+    <section id="reviews" className="overflow-hidden pt-8 pb-16 sm:pt-16 sm:pb-32">
       <Container>
         <div className="flex flex-col items-center text-center">
           <Reveal>

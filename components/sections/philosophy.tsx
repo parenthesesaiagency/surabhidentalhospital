@@ -9,7 +9,7 @@ import { Parallax } from "@/components/ui/parallax";
 
 export function Philosophy() {
   return (
-    <section className="overflow-hidden py-16 sm:py-32">
+    <section className="overflow-hidden pt-8 pb-16 sm:pt-16 sm:pb-32">
       <Container>
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div className="order-2 lg:order-1">

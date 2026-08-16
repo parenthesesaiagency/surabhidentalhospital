@@ -9,7 +9,7 @@ import { Lines } from "@/components/ui/lines";
 
 export function FaqSection() {
   return (
-    <section id="faq" className="bg-white py-16 sm:py-32">
+    <section id="faq" className="bg-white pt-8 pb-16 sm:pt-16 sm:pb-32">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">

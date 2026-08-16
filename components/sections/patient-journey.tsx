@@ -40,7 +40,7 @@ export function PatientJourney() {
   /* Reduced motion — render a calm, static journey instead of sticky scroll. */
   if (reduce) {
     return (
-      <section className="bg-ink py-16 text-cream sm:py-32">
+      <section className="bg-ink pt-8 pb-16 text-cream sm:pt-16 sm:pb-32">
         <Container>
           <Eyebrow tone="dark">{content.journey.eyebrow}</Eyebrow>
           <h2 className="mt-6 max-w-3xl text-[clamp(1.9rem,4.2vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-white">

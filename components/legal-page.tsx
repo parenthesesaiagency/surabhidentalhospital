@@ -46,7 +46,7 @@ export function LegalPage({
         </Container>
       </section>
 
-      <section className="py-16 sm:py-24">
+      <section className="pt-8 pb-16 sm:pt-12 sm:pb-24">
         <Container className="max-w-3xl">
           <Reveal>
             <p className="text-base leading-[1.85] text-ink/80">{intro}</p>
