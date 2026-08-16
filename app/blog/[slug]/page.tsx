@@ -6,7 +6,7 @@ import { ChevronRight, CalendarDays, Clock3 } from "lucide-react";
 import { getPost, posts } from "@/lib/data/posts";
 import { site } from "@/lib/data/site";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema } from "@/lib/schema/jsonLd";
+import { breadcrumbSchema, jsonLdScript } from "@/lib/schema/jsonLd";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { FinalCta } from "@/components/sections/final-cta";
@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+          __html: jsonLdScript(schema),
         }}
       />
 
@@ -122,7 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
         </Container>
       </section>
 
-      <article className="py-16 sm:py-24">
+      <article className="pt-8 pb-16 sm:pt-12 sm:pb-24">
         <Container className="max-w-3xl">
           {post.body.map((section, i) => (
             <Reveal key={section.heading} delay={0.05}>

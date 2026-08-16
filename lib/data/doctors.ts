@@ -1,4 +1,7 @@
 import { media } from "@/lib/media";
+import { site } from "@/lib/data/site";
+
+const brand = site.name;
 
 /**
  * Doctor profiles.
@@ -22,7 +25,7 @@ export const doctors: Doctor[] = [
     name: "Dr. [First Name] [Surname]",
     qualification: "[QUALIFICATION · e.g. BDS, MDS]",
     specialty: "[Specialisation — e.g. Implantology]",
-    bio: "[Short verified biography — e.g. Lead dentist at Dentora with a focus on gentle, predictable implant and restorative care.]",
+    bio: `[Short verified biography — e.g. Lead dentist at ${brand} with a focus on gentle, predictable implant and restorative care.]`,
     photo: media.doctors[0],
   },
   {

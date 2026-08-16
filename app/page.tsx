@@ -12,6 +12,7 @@ import { PatientJourney } from "@/components/sections/patient-journey";
 import { Reviews } from "@/components/sections/reviews";
 import { BeforeAfter } from "@/components/sections/before-after";
 import { JaipurSection } from "@/components/sections/jaipur-section";
+import { MapSection } from "@/components/sections/map-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { FinalCta } from "@/components/sections/final-cta";
 import { BookingSection } from "@/components/sections/booking-section";
@@ -36,6 +37,7 @@ export default function HomePage() {
       <Reviews />
       <BeforeAfter />
       <JaipurSection />
+      <MapSection />
       <FaqSection />
       <FinalCta />
       <BookingSection />

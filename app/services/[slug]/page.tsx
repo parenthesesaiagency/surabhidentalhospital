@@ -12,6 +12,7 @@ import {
   treatmentSchema,
   breadcrumbSchema,
   faqSchema,
+  jsonLdScript,
 } from "@/lib/schema/jsonLd";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -41,9 +42,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-const schemaScript = (content: object) =>
-  JSON.stringify(content).replace(/</g, "\\u003c");
-
 export default async function TreatmentPage({ params }: Props) {
   const { slug } = await params;
   const t = getTreatment(slug);
@@ -55,14 +53,16 @@ export default async function TreatmentPage({ params }: Props) {
     { name: "Treatments", path: "/services" },
     { name: t.name, path: `/services/${t.slug}` },
   ]);
-  const schemas = [treatmentSchema(t), breadcrumb, faqSchema(t.faqs)];
-
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: schemas.map(schemaScript).join("\n"),
+          __html: jsonLdScript(
+            treatmentSchema(t),
+            breadcrumb,
+            faqSchema(t.faqs),
+          ),
         }}
       />
 
@@ -126,7 +126,7 @@ export default async function TreatmentPage({ params }: Props) {
       </section>
 
       {/* Overview */}
-      <section className="py-16 sm:py-24">
+      <section className="pt-8 pb-16 sm:pt-12 sm:pb-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
             <Reveal>
@@ -164,7 +164,7 @@ export default async function TreatmentPage({ params }: Props) {
       </section>
 
       {/* Procedure */}
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white pt-8 pb-16 sm:pt-12 sm:pb-24">
         <Container>
           <Reveal>
             <div className="max-w-2xl">
@@ -197,7 +197,7 @@ export default async function TreatmentPage({ params }: Props) {
       </section>
 
       {/* Benefits + recovery */}
-      <section className="py-16 sm:py-24">
+      <section className="pt-8 pb-16 sm:pt-12 sm:pb-24">
         <Container>
           <div className="grid gap-6 lg:grid-cols-2">
             <Reveal>
@@ -252,7 +252,7 @@ export default async function TreatmentPage({ params }: Props) {
       </section>
 
       {/* FAQs */}
-      <section id="faq" className="bg-white py-16 sm:py-24">
+      <section id="faq" className="bg-white pt-8 pb-16 sm:pt-12 sm:pb-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
             <Reveal>
@@ -273,7 +273,7 @@ export default async function TreatmentPage({ params }: Props) {
       </section>
 
       {/* Local blurb */}
-      <section className="py-16 sm:py-20">
+      <section className="pt-8 pb-16 sm:pt-10 sm:pb-20">
         <Container>
           <Reveal>
             <p className="mx-auto max-w-3xl text-center text-base leading-[1.8] text-muted">

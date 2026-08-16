@@ -7,7 +7,12 @@ import {
   SITE_DESCRIPTION,
 } from "@/lib/seo/metadata";
 import { content } from "@/lib/data/content";
-import { organizationSchema, websiteSchema } from "@/lib/schema/jsonLd";
+import {
+  organizationSchema,
+  websiteSchema,
+  dentistSchema,
+  jsonLdScript,
+} from "@/lib/schema/jsonLd";
 import { Navbar } from "@/components/navbar/navbar";
 import { Footer } from "@/components/footer/footer";
 import { MobileActionBar } from "@/components/footer/mobile-action-bar";
@@ -49,10 +54,16 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = [organizationSchema(), websiteSchema()]
-  .map((schema) => JSON.stringify(schema))
-  .map((script) => script.replace(/</g, "\\u003c"))
-  .join("\n");
+/**
+ * Site-wide structured data. `dentistSchema` carries the clinic's name,
+ * address, geo, phone and opening hours — the local-SEO payload — so it
+ * belongs on every page alongside the organisation and website entries.
+ */
+const jsonLd = jsonLdScript(
+  organizationSchema(),
+  websiteSchema(),
+  dentistSchema(),
+);
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

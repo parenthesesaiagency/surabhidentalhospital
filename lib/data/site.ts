@@ -2,60 +2,68 @@
  * ─────────────────────────────────────────────────────────────────────────────
  * SITE CONTENT — single source of truth.
  *
- * Everything below is a PLACEHOLDER and is intentionally trivial to replace.
- * Swap the bracketed values for real clinic data when it becomes available.
+ * Clinic identity, location and contact details live here and nowhere else.
+ * Every component and copy string reads from this object, so changing a value
+ * below updates the whole site, including metadata and JSON-LD.
  *
- *   [CLINIC ADDRESS]   [NEIGHBOURHOOD]   [PHONE NUMBER]   [WHATSAPP NUMBER]
- *   [EMAIL ADDRESS]    [MAP LINK]
- *
- * The site renders cleanly with placeholders in place.
+ * STILL UNCONFIRMED — verify before launch:
+ *   · `hours` are assumed, not supplied by the clinic.
+ *   · `contact.whatsappTel` reuses the main number; confirm WhatsApp is active.
+ *   · `socials` are empty; they are omitted from schema until set.
+ *   · `url` is inferred from the email domain; set NEXT_PUBLIC_SITE_URL to
+ *     override once the live domain is confirmed.
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
 export const site = {
-  name: "Dentora",
-  legalName: "Dentora Dental Clinic",
-  descriptor: "Dental Studio · Jaipur",
+  /** Short brand used in prose, navigation and headings. */
+  name: "Sharda Dental Hospital",
+  /** Full registered/listed name — used for JSON-LD and legal copy. */
+  legalName: "Sharda Dental Hospital - Dentist Clinic",
+  descriptor: "Dental Hospital · Jaipur",
   tagline: "Modern Dentistry. Thoughtfully Delivered.",
   description:
-    "Dentora is a modern dental clinic in Jaipur offering preventive, cosmetic and restorative dental care in a comfortable, patient-first environment.",
+    "Sharda Dental Hospital is a modern dental clinic in Mansarovar, Jaipur offering preventive, cosmetic and restorative dental care in a comfortable, patient-first environment.",
   location: {
     city: "Jaipur",
     state: "Rajasthan",
     country: "IN",
-    // PLACEHOLDER
-    address: "[CLINIC ADDRESS]",
-    neighbourhood: "[NEIGHBOURHOOD, JAIPUR]",
-    zip: "[PIN CODE]",
-    // Leave empty until real geo coordinates are confirmed.
-    geo: { lat: "", lng: "" },
+    address: "Shipra Path, Mansarovar Sector 7",
+    neighbourhood: "Sector 9, Mansarovar",
+    zip: "302020",
+    // From the clinic's Google Maps place listing.
+    geo: { lat: "26.8503905", lng: "75.7734258" },
   },
   contact: {
-    // PLACEHOLDER — use E.164 without spaces, e.g. +919XXXXXXXXX
-    phoneDisplay: "+91 00000 00000",
-    phoneTel: "+919000000000",
+    phoneDisplay: "+91 94143 40674",
+    phoneTel: "+919414340674",
     whatsappDisplay: "WhatsApp",
-    whatsappTel: "+919000000000",
-    email: "care@dentorajaipur.in",
+    whatsappTel: "+919414340674",
+    email: "info@shardadental.com",
   },
   hours: [
     { day: "Monday – Saturday", time: "10:00 AM – 8:30 PM" },
     { day: "Sunday", time: "By appointment" },
   ],
-  // PLACEHOLDER — replace with a real Google Maps link when the address is set.
-  mapLink:
-    "https://www.google.com/maps/search/?api=1&query=Dentora+Dental+Clinic+Jaipur",
+  mapLink: "https://maps.app.goo.gl/LS4Fou62J9mT6pvB8",
+  /**
+   * Keyless Google Maps embed pinned to the clinic's coordinates.
+   * Coordinates (not a text query) so the pin can't drift to a similarly
+   * named business.
+   */
+  mapEmbed:
+    "https://www.google.com/maps?q=26.8503905,75.7734258&z=16&hl=en&output=embed",
   // PLACEHOLDER — set to real social profiles when available.
   socials: {
     instagram: "",
     facebook: "",
   },
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.dentora.in",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.shardadental.com",
 };
 
 export const navLinks = [
   { label: "Treatments", href: "/services" },
-  { label: "Why Dentora", href: "/#why-dentora" },
+  { label: "Why Choose Us", href: "/#why-dentora" },
   { label: "Our Doctors", href: "/#doctors" },
   { label: "Reviews", href: "/#reviews" },
   { label: "FAQ", href: "/#faq" },

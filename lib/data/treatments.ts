@@ -1,4 +1,8 @@
 import { img } from "@/lib/media";
+import { site } from "@/lib/data/site";
+
+/** Brand name is wired to `site.ts` so a rename never leaves stragglers here. */
+const brand = site.name;
 
 export type Treatment = {
   slug: string;
@@ -24,13 +28,13 @@ export const treatments: Treatment[] = [
     name: "General Dentistry",
     short: "Comprehensive exams and preventive care, starting with a gentle conversation about your concerns.",
     overview:
-      "A thorough dental check-up in Jaipur is the foundation of long-term oral health. At Dentora, every consultation starts with listening — then a detailed examination of your teeth, gums and supporting structures, followed by a clear, honest summary of what we found and what we recommend. Nothing is done without your understanding first.",
+      `A thorough dental check-up in Jaipur is the foundation of long-term oral health. At ${brand}, every consultation starts with listening — then a detailed examination of your teeth, gums and supporting structures, followed by a clear, honest summary of what we found and what we recommend. Nothing is done without your understanding first.`,
     image: img(3952124),
     imageAlt:
-      "Dentist performing a routine dental examination at Dentora dental clinic in Jaipur",
-    seoTitle: "Dental Check-up in Jaipur | General Dentistry | Dentora",
+      `Dentist performing a routine dental examination at ${brand} dental clinic in Jaipur`,
+    seoTitle: `Dental Check-up in Jaipur | General Dentistry | ${brand}`,
     seoDescription:
-      "Preventive dental check-ups in Jaipur at Dentora — gentle, thorough exams, honest advice and early problem detection from an experienced dental team.",
+      `Preventive dental check-ups in Jaipur at ${brand} — gentle, thorough exams, honest advice and early problem detection from an experienced dental team.`,
     whoItsFor: [
       "Anyone who hasn't seen a dentist in over six months",
       "Families looking for a single trusted dental clinic in Jaipur",
@@ -74,24 +78,24 @@ export const treatments: Treatment[] = [
       },
       {
         q: "Do you take new patients at your Jaipur clinic?",
-        a: "Yes — new patients are welcome at Dentora. Book an appointment and we'll take the time to understand your needs from the very first visit.",
+        a: `Yes — new patients are welcome at ${brand}. Book an appointment and we'll take the time to understand your needs from the very first visit.`,
       },
     ],
     related: ["teeth-cleaning", "root-canal", "crowns-bridges"],
     local:
-      "Conveniently located in Jaipur, Dentora makes regular dental check-ups easy to fit around work and family. Our team serves patients across the city.",
+      `Conveniently located in Jaipur, ${brand} makes regular dental check-ups easy to fit around work and family. Our team serves patients across the city.`,
   },
   {
     slug: "teeth-cleaning",
     name: "Teeth Cleaning",
     short: "Professional scaling and polishing that leaves your mouth feeling genuinely fresh.",
     overview:
-      "Even careful brushing misses plaque in tight spaces. Professional teeth cleaning at Dentora removes hardened tartar above and below the gumline, then polishes your teeth for a noticeably cleaner, smoother feeling. It's preventive care that pays for itself many times over.",
+      `Even careful brushing misses plaque in tight spaces. Professional teeth cleaning at ${brand} removes hardened tartar above and below the gumline, then polishes your teeth for a noticeably cleaner, smoother feeling. It's preventive care that pays for itself many times over.`,
     image: img(6627413),
     imageAlt: "Professional teeth cleaning and polishing at a modern dental clinic in Jaipur",
-    seoTitle: "Teeth Cleaning in Jaipur | Dental Scaling & Polishing | Dentora",
+    seoTitle: `Teeth Cleaning in Jaipur | Dental Scaling & Polishing | ${brand}`,
     seoDescription:
-      "Professional teeth cleaning in Jaipur at Dentora. Gentle scaling and polishing to remove plaque, prevent gum disease and keep your smile bright.",
+      `Professional teeth cleaning in Jaipur at ${brand}. Gentle scaling and polishing to remove plaque, prevent gum disease and keep your smile bright.`,
     whoItsFor: [
       "Anyone with plaque build-up or staining from tea, coffee or tobacco",
       "Patients with bleeding or puffy gums",
@@ -140,19 +144,19 @@ export const treatments: Treatment[] = [
     ],
     related: ["dental-checkup", "teeth-whitening", "smile-makeover"],
     local:
-      "Jaipur's weather and chai culture can be tough on your teeth — professional cleaning at Dentora helps you stay ahead of staining and gum issues close to home.",
+      `Jaipur's weather and chai culture can be tough on your teeth — professional cleaning at ${brand} helps you stay ahead of staining and gum issues close to home.`,
   },
   {
     slug: "root-canal",
     name: "Root Canal Treatment",
     short: "Modern, comfortable root canal treatment that saves your natural tooth.",
     overview:
-      "A root canal saves a tooth that is badly decayed or infected rather than removing it. With modern anaesthesia, rotary instruments and digital X-rays, root canal treatment at Dentora is far more comfortable than its reputation suggests — usually no more stressful than getting a filling.",
+      `A root canal saves a tooth that is badly decayed or infected rather than removing it. With modern anaesthesia, rotary instruments and digital X-rays, root canal treatment at ${brand} is far more comfortable than its reputation suggests — usually no more stressful than getting a filling.`,
     image: img(7800675),
     imageAlt: "Root canal treatment being performed with modern equipment in a Jaipur dental clinic",
-    seoTitle: "Root Canal Treatment in Jaipur | Painless RCT | Dentora",
+    seoTitle: `Root Canal Treatment in Jaipur | Painless RCT | ${brand}`,
     seoDescription:
-      "Comfortable, modern root canal treatment in Jaipur at Dentora. Save your natural tooth with painless, single-visit RCT by experienced specialists.",
+      `Comfortable, modern root canal treatment in Jaipur at ${brand}. Save your natural tooth with painless, single-visit RCT by experienced specialists.`,
     whoItsFor: [
       "Patients with deep decay reaching the nerve",
       "Persistent tooth pain, especially when biting or with hot/cold",
@@ -188,7 +192,7 @@ export const treatments: Treatment[] = [
     faqs: [
       {
         q: "How long does a root canal take in Jaipur?",
-        a: "Many root canals at Dentora are completed in a single visit of roughly 60–90 minutes. Complex cases may need a second visit — we'll give you a clear timeline beforehand.",
+        a: `Many root canals at ${brand} are completed in a single visit of roughly 60–90 minutes. Complex cases may need a second visit — we'll give you a clear timeline beforehand.`,
       },
       {
         q: "Is root canal treatment painful?",
@@ -201,7 +205,7 @@ export const treatments: Treatment[] = [
     ],
     related: ["dental-implants", "crowns-bridges", "dental-checkup"],
     local:
-      "Root canal treatment in Jaipur shouldn't mean travelling across the city twice. Dentora's single-visit approach gets you back to your routine faster.",
+      `Root canal treatment in Jaipur shouldn't mean travelling across the city twice. ${brand}'s single-visit approach gets you back to your routine faster.`,
   },
   {
     slug: "dental-implants",
@@ -211,9 +215,9 @@ export const treatments: Treatment[] = [
       "A dental implant is a small titanium post placed into the jawbone that acts like a natural tooth root, topped with a lifelike crown. Unlike bridges or dentures, implants replace the root as well as the crown — protecting your jawbone and giving you a tooth that looks, feels and functions naturally.",
     image: img(4269948),
     imageAlt: "Close-up of a dental implant restoration at a modern Jaipur dental clinic",
-    seoTitle: "Dental Implants in Jaipur | Permanent Tooth Replacement | Dentora",
+    seoTitle: `Dental Implants in Jaipur | Permanent Tooth Replacement | ${brand}`,
     seoDescription:
-      "Dental implants in Jaipur at Dentora — permanent, natural-looking tooth replacement that protects your jawbone and restores confident chewing.",
+      `Dental implants in Jaipur at ${brand} — permanent, natural-looking tooth replacement that protects your jawbone and restores confident chewing.`,
     whoItsFor: [
       "Anyone with a missing tooth or multiple missing teeth",
       "Denture wearers looking for a fixed alternative",
@@ -262,19 +266,19 @@ export const treatments: Treatment[] = [
     ],
     related: ["crowns-bridges", "smile-makeover", "dental-checkup"],
     local:
-      "Looking for dental implants in Jaipur? Dentora offers complete implant care — planning, placement and restoration — all in one calm, modern clinic.",
+      `Looking for dental implants in Jaipur? ${brand} offers complete implant care — planning, placement and restoration — all in one calm, modern clinic.`,
   },
   {
     slug: "teeth-whitening",
     name: "Teeth Whitening",
     short: "A safe, professional brightening that's visible in a single session.",
     overview:
-      "Professional teeth whitening lifts years of staining from tea, coffee, tobacco and age — safely, and in a way that respects your enamel. Unlike over-the-counter kits, in-clinic whitening at Dentora is supervised, calibrated and tailored to your natural tooth shade.",
+      `Professional teeth whitening lifts years of staining from tea, coffee, tobacco and age — safely, and in a way that respects your enamel. Unlike over-the-counter kits, in-clinic whitening at ${brand} is supervised, calibrated and tailored to your natural tooth shade.`,
     image: img(15225509),
     imageAlt: "Bright natural smile after professional teeth whitening in Jaipur",
-    seoTitle: "Teeth Whitening in Jaipur | Professional Brightening | Dentora",
+    seoTitle: `Teeth Whitening in Jaipur | Professional Brightening | ${brand}`,
     seoDescription:
-      "Professional teeth whitening in Jaipur at Dentora — safe, in-clinic brightening that visibly lifts stains in a single session. Book a consultation.",
+      `Professional teeth whitening in Jaipur at ${brand} — safe, in-clinic brightening that visibly lifts stains in a single session. Book a consultation.`,
     whoItsFor: [
       "Anyone bothered by yellowing or stained teeth",
       "Tea, coffee or tobacco users",
@@ -323,19 +327,19 @@ export const treatments: Treatment[] = [
     ],
     related: ["veneers", "smile-makeover", "teeth-cleaning"],
     local:
-      "Jaipur's winters are full of weddings and celebrations — a quick professional whitening at Dentora gets your smile photo-ready.",
+      `Jaipur's winters are full of weddings and celebrations — a quick professional whitening at ${brand} gets your smile photo-ready.`,
   },
   {
     slug: "veneers",
     name: "Veneers",
     short: "Ultra-thin ceramic shells that redesign the front of your smile.",
     overview:
-      "Porcelain veneers are wafer-thin ceramic layers bonded to the front of your teeth to correct chips, gaps, discolouration and uneven shapes. Designed with your face in mind, veneers at Dentora give you a smile that looks natural — never 'done'.",
+      `Porcelain veneers are wafer-thin ceramic layers bonded to the front of your teeth to correct chips, gaps, discolouration and uneven shapes. Designed with your face in mind, veneers at ${brand} give you a smile that looks natural — never 'done'.`,
     image: img(5622257),
     imageAlt: "Close-up of natural-looking porcelain veneers on a smile",
-    seoTitle: "Veneers in Jaipur | Porcelain Veneers | Cosmetic Dentist Dentora",
+    seoTitle: `Veneers in Jaipur | Porcelain Veneers | Cosmetic Dentist ${brand}`,
     seoDescription:
-      "Porcelain veneers in Jaipur at Dentora — ultra-thin ceramic shells that correct chips, gaps and discolouration for a natural, confident smile.",
+      `Porcelain veneers in Jaipur at ${brand} — ultra-thin ceramic shells that correct chips, gaps and discolouration for a natural, confident smile.`,
     whoItsFor: [
       "Chipped, worn or uneven front teeth",
       "Gaps you'd like closed without orthodontics",
@@ -384,19 +388,19 @@ export const treatments: Treatment[] = [
     ],
     related: ["smile-makeover", "teeth-whitening", "dental-implants"],
     local:
-      "Whether it's for a ceremony or everyday confidence, patients across Jaipur choose Dentora veneers for subtle, natural-looking results.",
+      `Whether it's for a ceremony or everyday confidence, patients across Jaipur choose ${brand} veneers for subtle, natural-looking results.`,
   },
   {
     slug: "crowns-bridges",
     name: "Crowns & Bridges",
     short: "Strong, natural-looking restorations that rebuild damaged or missing teeth.",
     overview:
-      "A crown fully caps a weakened tooth, protecting it and restoring its function. A bridge fills the gap of one or more missing teeth using the neighbouring teeth for support. At Dentora, both are crafted to blend seamlessly with your natural smile.",
+      `A crown fully caps a weakened tooth, protecting it and restoring its function. A bridge fills the gap of one or more missing teeth using the neighbouring teeth for support. At ${brand}, both are crafted to blend seamlessly with your natural smile.`,
     image: img(4269682),
     imageAlt: "Natural-looking dental crown restoration at a modern dental clinic in Jaipur",
-    seoTitle: "Dental Crowns & Bridges in Jaipur | Restorative Dentistry | Dentora",
+    seoTitle: `Dental Crowns & Bridges in Jaipur | Restorative Dentistry | ${brand}`,
     seoDescription:
-      "Dental crowns and bridges in Jaipur at Dentora — strong, natural-looking restorations that rebuild damaged teeth and close gaps. Book a consultation.",
+      `Dental crowns and bridges in Jaipur at ${brand} — strong, natural-looking restorations that rebuild damaged teeth and close gaps. Book a consultation.`,
     whoItsFor: [
       "Teeth weakened by large fillings or root canal treatment",
       "Cracked or broken teeth",
@@ -445,7 +449,7 @@ export const treatments: Treatment[] = [
     ],
     related: ["dental-implants", "root-canal", "dental-checkup"],
     local:
-      "From root-canal-protecting crowns to gap-closing bridges, Dentora brings dependable restorative dentistry to Jaipur families.",
+      `From root-canal-protecting crowns to gap-closing bridges, ${brand} brings dependable restorative dentistry to Jaipur families.`,
   },
   {
     slug: "smile-makeover",
@@ -454,10 +458,10 @@ export const treatments: Treatment[] = [
     overview:
       "A smile makeover combines treatments like whitening, veneers, bonding or alignment correction into one coordinated plan. Rather than fixing teeth one at a time, we start from the smile you want and work backwards, creating a single roadmap that's clear, phased and entirely yours.",
     image: img(13219418),
-    imageAlt: "Confident smile transformation from a full smile makeover at Dentora Jaipur",
-    seoTitle: "Smile Makeover in Jaipur | Complete Smile Design | Dentora",
+    imageAlt: `Confident smile transformation from a full smile makeover at ${brand} Jaipur`,
+    seoTitle: `Smile Makeover in Jaipur | Complete Smile Design | ${brand}`,
     seoDescription:
-      "Complete smile makeovers in Jaipur at Dentora — a personalised plan combining whitening, veneers and restorative care for a confident smile.",
+      `Complete smile makeovers in Jaipur at ${brand} — a personalised plan combining whitening, veneers and restorative care for a confident smile.`,
     whoItsFor: [
       "People who need several improvements at once",
       "Chipped, stained, gapped or uneven teeth",
@@ -506,7 +510,7 @@ export const treatments: Treatment[] = [
     ],
     related: ["veneers", "teeth-whitening", "dental-implants"],
     local:
-      "Your smile is often the first thing people notice about you in Jaipur — and Dentora designs makeovers that feel authentically yours.",
+      `Your smile is often the first thing people notice about you in Jaipur — and ${brand} designs makeovers that feel authentically yours.`,
   },
 ];
 

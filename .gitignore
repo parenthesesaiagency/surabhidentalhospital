@@ -24,6 +24,13 @@
 .DS_Store
 *.pem
 dev-server.log
+dev-server.log.err
+
+# local agent/editor tooling
+/.claude/
+
+# netlify
+.netlify
 
 # debug
 npm-debug.log*

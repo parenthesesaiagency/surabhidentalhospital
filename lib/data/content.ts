@@ -79,7 +79,7 @@ export const content = {
     imageAltSecondary: `Close detail of modern dental equipment in the ${brand} clinic`,
   },
 
-  /* ─────────────────────────── Why Dentora ─────────────────────────── */
+  /* ─────────────────────────── Why choose us ─────────────────────────── */
 
   why: {
     eyebrow: `Why ${brand}`,
@@ -191,6 +191,19 @@ export const content = {
     bookCta: "Book Appointment",
     imageAlt: `Inside the calm, modern ${brand} dental clinic in ${city}`,
     floatingCardSub: `${site.location.neighbourhood} · ${city}`,
+  },
+
+  /* ─────────────────────────── Map ─────────────────────────── */
+
+  map: {
+    sectionAria: `Map showing the location of ${brand}`,
+    eyebrow: "Find Us",
+    headingLines: ["Visit us in", `${site.location.neighbourhood}.`],
+    body: `We're on ${site.location.address} in ${site.location.neighbourhood}, ${city}. Tap the map for turn-by-turn directions, or call ahead and we'll guide you in.`,
+    frameTitle: `Google Map showing ${brand} in ${site.location.neighbourhood}, ${city}`,
+    directionsCta: "Open in Google Maps",
+    callCta: "Call the Clinic",
+    fullAddress: `${site.location.address}, ${site.location.neighbourhood}, ${city}, ${site.location.state} ${site.location.zip}`,
   },
 
   /* ─────────────────────────── FAQ ─────────────────────────── */

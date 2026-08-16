@@ -10,6 +10,21 @@ import { site } from "@/lib/data/site";
 
 const url = site.url.replace(/\/$/, "");
 
+/**
+ * Serialise schemas into the body of a single `application/ld+json` script.
+ *
+ * Everything goes into one `@graph` under one `@context`. Emitting several
+ * bare objects back-to-back in a single script tag is not valid JSON, so
+ * parsers reject the whole block — hence a single wrapper here rather than
+ * joining `JSON.stringify` output at each call site.
+ */
+export function jsonLdScript(...schemas: object[]) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": schemas,
+  }).replace(/</g, "\\u003c");
+}
+
 const areaServed = () => ({
   "@type": "City" as const,
   name: site.location.city,
@@ -21,13 +36,12 @@ const areaServedRegion = () => ({
 });
 
 function clinicAddress() {
-  const hasAddress = site.location.address !== "[CLINIC ADDRESS]";
   return {
     "@type": "PostalAddress" as const,
-    streetAddress: site.location.address,
+    streetAddress: `${site.location.address}, ${site.location.neighbourhood}`,
     addressLocality: site.location.city,
     addressRegion: site.location.state,
-    postalCode: hasAddress ? site.location.zip : undefined,
+    postalCode: site.location.zip,
     addressCountry: site.location.country,
   };
 }

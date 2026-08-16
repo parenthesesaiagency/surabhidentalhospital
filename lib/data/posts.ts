@@ -1,4 +1,7 @@
 import { img } from "@/lib/media";
+import { site } from "@/lib/data/site";
+
+const brand = site.name;
 
 export type Post = {
   slug: string;
@@ -29,7 +32,7 @@ export const posts: Post[] = [
     category: "Preventive Care",
     image: img(6627413, 1600, 900),
     imageAlt: "Professional teeth cleaning appointment in Jaipur",
-    seoTitle: "How Often Should You Get Your Teeth Cleaned? | Dentora Jaipur",
+    seoTitle: `How Often Should You Get Your Teeth Cleaned? | ${brand} Jaipur`,
     seoDescription:
       "How often do you really need professional teeth cleaning? A dentist in Jaipur explains what the six-month rule is based on and when it changes.",
     body: [
@@ -66,7 +69,7 @@ export const posts: Post[] = [
     category: "Restorative Care",
     image: img(7800675, 1600, 900),
     imageAlt: "Root canal treatment chairside in a modern dental clinic",
-    seoTitle: "Signs You May Need a Root Canal | Dentora Jaipur",
+    seoTitle: `Signs You May Need a Root Canal | ${brand} Jaipur`,
     seoDescription:
       "Wondering if that toothache means a root canal? A Jaipur dentist explains the common warning signs of an infected tooth nerve.",
     body: [
@@ -103,7 +106,7 @@ export const posts: Post[] = [
     category: "Guides",
     image: img(6627353, 1600, 900),
     imageAlt: "Modern dental clinic interior in Jaipur",
-    seoTitle: "How to Choose a Dental Clinic in Jaipur | Dentora",
+    seoTitle: `How to Choose a Dental Clinic in Jaipur | ${brand}`,
     seoDescription:
       "Choosing a dentist in Jaipur? This practical checklist covers transparency, technology, hygiene and comfort to help you decide with confidence.",
     body: [
