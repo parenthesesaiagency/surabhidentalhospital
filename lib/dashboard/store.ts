@@ -69,7 +69,18 @@ function newId(): string {
 }
 
 export async function getStore(): Promise<Store> {
-  return readStore();
+  const store = await readStore();
+  // First run: the store is empty, so seed 10 default demo inquiries so the
+  // dashboard is usable immediately. The guard in seed.ts ensures real data
+  // (or previously-added demo inquiries) is never duplicated. Pass the store
+  // to seedDemo so it doesn't re-enter getStore (avoiding infinite recursion),
+  // then re-read so the freshly-seeded data is returned.
+  if (store.inquiries.length === 0 && store.events.length === 0) {
+    const { seedDemo } = await import("./seed");
+    await seedDemo(store);
+    return readStore();
+  }
+  return store;
 }
 
 export async function addInquiry(input: {

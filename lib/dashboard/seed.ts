@@ -1,4 +1,4 @@
-import { addEvent, addInquiry, getStore } from "@/lib/dashboard/store";
+import { addEvent, addInquiry, getStore, type Store } from "@/lib/dashboard/store";
 
 /**
  * Generates a realistic 30-day sample of inquiries + events so the dashboard
@@ -51,15 +51,15 @@ function daysAgoMs(days: number): number {
   return now.getTime();
 }
 
-export async function seedDemo() {
-  const store = await getStore();
+export async function seedDemo(existing?: Store) {
+  const store = existing ?? (await getStore());
   const hasReal = store.inquiries.some((i) => !i.demo);
   if (hasReal) return { seeded: false, reason: "Real inquiries present — not seeding." };
 
   const rand = mulberry32(20260905);
   const pick = <T,>(arr: T[]) => arr[Math.floor(rand() * arr.length)];
 
-  const inquiries = Array.from({ length: 140 }, (_, i) => {
+  const inquiries = Array.from({ length: 10 }, (_, i) => {
     const daysAgo = 0 === i % 5 ? 0 : Math.floor(rand() * 30);
     const date = new Date(daysAgoMs(daysAgo));
     const iso = date.toISOString();
