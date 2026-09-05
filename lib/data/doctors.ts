@@ -5,9 +5,8 @@ const brand = site.name;
 
 /**
  * Doctor profiles.
- * PLACEHOLDER — [DOCTOR NAME] / [QUALIFICATION] / [SPECIALTY] are to be
- * replaced with real, verified credentials before launch. Qualifications and
- * experience years are deliberately NOT invented.
+ * Credentials below are verified against the clinic's own profile page.
+ * Additional team members will be added here as their details are confirmed.
  */
 
 export type Doctor = {
@@ -22,29 +21,13 @@ export type Doctor = {
 export const doctors: Doctor[] = [
   {
     id: "doctor-1",
-    name: "Dr. [First Name] [Surname]",
-    qualification: "[QUALIFICATION · e.g. BDS, MDS]",
-    specialty: "[Specialisation — e.g. Implantology]",
-    bio: `[Short verified biography — e.g. Lead dentist at ${brand} with a focus on gentle, predictable implant and restorative care.]`,
+    name: "Dr. Saurabh Gupta",
+    qualification: "BDS · Diploma in Public Health · FAGD",
+    specialty: "Implantologist · Laser & Root Canal Specialist",
+    bio: `Dr. Saurabh Gupta leads ${brand} with a focus on dental implants, laser dentistry and root canal care. A graduate of Darshan Dental College, Udaipur, he holds a Diploma in Public Health, a Fellowship of the Academy of General Dentistry (FAGD) and a Diploma in Implant Dentistry. He practises gentle, pain-free dentistry and serves as a consultant at Shishu Mangal Hospital, Jaipur.`,
     photo: media.doctors[0],
-  },
-  {
-    id: "doctor-2",
-    name: "Dr. [First Name] [Surname]",
-    qualification: "[QUALIFICATION · e.g. BDS, MDS]",
-    specialty: "[Specialisation — e.g. Root Canal & Endodontics]",
-    bio: "[Short verified biography.]",
-    photo: media.doctors[1],
-  },
-  {
-    id: "doctor-3",
-    name: "Dr. [First Name] [Surname]",
-    qualification: "[QUALIFICATION · e.g. BDS]",
-    specialty: "[Specialisation — e.g. Orthodontics & Alignment]",
-    bio: "[Short verified biography.]",
-    photo: media.doctors[2],
   },
 ];
 
 export const doctorSectionNote =
-  "Doctor profiles and credentials will be added here as they are confirmed. Nothing is published until it has been verified.";
+  "Team profiles are added here as they are confirmed. Nothing is published until it has been verified.";

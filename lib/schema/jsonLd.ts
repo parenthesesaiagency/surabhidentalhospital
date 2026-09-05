@@ -93,12 +93,25 @@ export function dentistSchema() {
           },
         }
       : {}),
+    // Matches the clinic's published schedule: two daily sessions.
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification" as const,
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        opens: "10:00",
+        opens: "09:00",
+        closes: "14:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification" as const,
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "17:00",
         closes: "20:30",
+      },
+      {
+        "@type": "OpeningHoursSpecification" as const,
+        dayOfWeek: ["Sunday"],
+        opens: "09:00",
+        closes: "14:00",
       },
     ],
     areaServed: [areaServed(), areaServedRegion()],

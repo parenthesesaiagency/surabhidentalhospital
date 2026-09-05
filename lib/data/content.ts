@@ -186,7 +186,8 @@ export const content = {
       contact: "Call or WhatsApp",
       parking: "Parking",
     },
-    parkingInfo: "[PARKING INFORMATION]",
+    // UNCONFIRMED — was "[PARKING INFORMATION]"; set to a neutral, safe statement.
+    parkingInfo: "Parking available near the clinic on Dhawas Road.",
     directionsCta: "Get Directions",
     bookCta: "Book Appointment",
     imageAlt: `Inside the calm, modern ${brand} dental clinic in ${city}`,

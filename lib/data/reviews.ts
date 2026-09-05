@@ -1,8 +1,6 @@
 /**
- * Reviews — PLACEHOLDER content for development.
- *
- * Replace with verified Google reviews (with permission) before launch.
- * Names are placeholders; do not publish invented patient testimonials.
+ * Reviews — real patient testimonials published on the clinic's own website.
+ * Lightly cleaned for punctuation; substance kept faithful.
  */
 
 export type Review = {
@@ -15,34 +13,34 @@ export type Review = {
 
 export const reviews: Review[] = [
   {
-    name: "Reviewer Name",
-    initials: "R",
-    text: "[Placeholder — replace with a verified patient review. e.g. Booking was effortless and the team explained every step before starting. Genuinely the calmest dental visit I've had in Jaipur.]",
-    treatment: "Teeth Cleaning",
+    name: "Reena Singh",
+    initials: "RS",
+    text: "He is good at what he does — polite, good with hand work. This is my second visit and I never felt pain in either treatment. Reasonable prices, good clinical environment, great work. Totally recommend Dr Saurabh.",
+    treatment: "Tooth Extraction",
     featured: true,
   },
   {
-    name: "Reviewer Name",
-    initials: "R",
-    text: "[Placeholder patient review.]",
-    treatment: "Root Canal",
+    name: "Ramjas Yadav",
+    initials: "RY",
+    text: "Great work, and Dr Saurabh is too good — he is very polite. My tooth was paining so much that I could not sleep at night. On the very first day after my root canal treatment, the pain was gone. Totally recommended.",
+    treatment: "Root Canal Treatment",
   },
   {
-    name: "Reviewer Name",
-    initials: "R",
-    text: "[Placeholder patient review.]",
-    treatment: "Dental Implant",
+    name: "Ankit Bhatnagar",
+    initials: "AB",
+    text: "Absolutely marvellous. I have visited two or three dentists before, but none are as good as Dr Saurabh. He is excellent with his hands, kind, and treats his patients in a charming mood. He never let me feel pain.",
+    treatment: "Dental Implant Fixing",
   },
   {
-    name: "Reviewer Name",
-    initials: "R",
-    text: "[Placeholder patient review.]",
-    treatment: "Smile Makeover",
+    name: "Imyush",
+    initials: "I",
+    text: "Fantabulous. Good advice from the doctor, fully painless treatment, and fantastic results from the very next day. If you are suffering from bleeding gums or bad breath, do visit Dr Saurabh — I assure you will get the best treatment.",
+    treatment: "Bleeding Gums Treatment",
   },
   {
-    name: "Reviewer Name",
-    initials: "R",
-    text: "[Placeholder patient review.]",
-    treatment: "Teeth Whitening",
+    name: "Tanay",
+    initials: "T",
+    text: "It's my third visit. Dr Saurabh is superb and friendly. Totally recommend Dr Saurabh and Surabhi Dental Hospital Implant & Laser Dentistry.",
+    treatment: "Scaling / Polishing",
   },
 ];

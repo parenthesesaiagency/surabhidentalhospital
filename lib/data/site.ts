@@ -7,58 +7,57 @@
  * below updates the whole site, including metadata and JSON-LD.
  *
  * STILL UNCONFIRMED — verify before launch:
- *   · `hours` are assumed, not supplied by the clinic.
+ *   · `hours` follow the clinic's published schedule; re-confirm on request.
  *   · `contact.whatsappTel` reuses the main number; confirm WhatsApp is active.
- *   · `socials` are empty; they are omitted from schema until set.
- *   · `url` is inferred from the email domain; set NEXT_PUBLIC_SITE_URL to
- *     override once the live domain is confirmed.
+ *   · `socials.facebook` is the clinic's public page; Instagram not confirmed.
+ *   · `url` defaults to the clinic's live domain; NEXT_PUBLIC_SITE_URL wins.
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
 export const site = {
   /** Short brand used in prose, navigation and headings. */
-  name: "Sharda Dental Hospital",
+  name: "Surabhi Dental Hospital",
   /** Full registered/listed name — used for JSON-LD and legal copy. */
-  legalName: "Sharda Dental Hospital - Dentist Clinic",
+  legalName: "Surabhi Dental Hospital Implant & Laser Dentistry",
   descriptor: "Dental Hospital · Jaipur",
-  tagline: "Modern Dentistry. Thoughtfully Delivered.",
+  tagline: "Implant & Laser Dentistry",
   description:
-    "Sharda Dental Hospital is a modern dental clinic in Mansarovar, Jaipur offering preventive, cosmetic and restorative dental care in a comfortable, patient-first environment.",
+    "Surabhi Dental Hospital is a dental clinic in Heera Pura, Jaipur offering dental implants, laser dentistry, root canal treatment and complete family dental care — gentle, price-transparent and explained at every step.",
   location: {
     city: "Jaipur",
     state: "Rajasthan",
     country: "IN",
-    address: "Shipra Path, Mansarovar Sector 7",
-    neighbourhood: "Sector 9, Mansarovar",
-    zip: "302020",
+    address: "Dadu Dayal Tower, Jagdamba Nagar-B, Dhawas Road",
+    neighbourhood: "Heera Pura",
+    zip: "302034",
     // From the clinic's Google Maps place listing.
-    geo: { lat: "26.8503905", lng: "75.7734258" },
+    geo: { lat: "26.892204", lng: "75.7232731" },
   },
   contact: {
-    phoneDisplay: "+91 94143 40674",
-    phoneTel: "+919414340674",
+    phoneDisplay: "+91 96808 48986",
+    phoneTel: "+919680848986",
     whatsappDisplay: "WhatsApp",
-    whatsappTel: "+919414340674",
-    email: "info@shardadental.com",
+    whatsappTel: "+919680848986",
+    email: "dr.sauravgupta24@yahoo.com",
   },
   hours: [
-    { day: "Monday – Saturday", time: "10:00 AM – 8:30 PM" },
-    { day: "Sunday", time: "By appointment" },
+    { day: "Monday – Saturday", time: "9:00 AM – 2:00 PM · 5:00 PM – 8:30 PM" },
+    { day: "Sunday", time: "9:00 AM – 2:00 PM · Evening off" },
   ],
-  mapLink: "https://maps.app.goo.gl/LS4Fou62J9mT6pvB8",
+  mapLink: "https://maps.app.goo.gl/uYXyZ8geJp1xk8yAA",
   /**
    * Keyless Google Maps embed pinned to the clinic's coordinates.
    * Coordinates (not a text query) so the pin can't drift to a similarly
    * named business.
    */
   mapEmbed:
-    "https://www.google.com/maps?q=26.8503905,75.7734258&z=16&hl=en&output=embed",
-  // PLACEHOLDER — set to real social profiles when available.
+    "https://www.google.com/maps?q=26.892204,75.7232731&z=16&hl=en&output=embed",
+  // PLACEHOLDER — Instagram not confirmed; Facebook is the clinic's public page.
   socials: {
     instagram: "",
-    facebook: "",
+    facebook: "https://www.facebook.com/surabhidentalhospital",
   },
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.shardadental.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://surabhidentalhospital.com",
 };
 
 export const navLinks = [
@@ -78,14 +77,14 @@ export const trustStrip = [
 
 /**
  * Hero trust indicators.
- * PLACEHOLDER values — replace with verified clinic figures.
+ * Figures as published by the clinic on its own website and profiles.
  */
 export const heroStats: {
   value: string;
   suffix?: string;
   label: string;
 }[] = [
-  { value: "4.9", suffix: "★", label: "Google Rating" },
-  { value: "5000", suffix: "+", label: "Happy Patients" },
-  { value: "", suffix: "", label: "Advanced Digital Dentistry" },
+  { value: "12", suffix: "+", label: "Years of Experience" },
+  { value: "303", suffix: "+", label: "Verified Patient Votes" },
+  { value: "", suffix: "", label: "Implant & Laser Dentistry" },
 ];
