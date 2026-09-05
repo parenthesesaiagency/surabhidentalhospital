@@ -245,7 +245,7 @@ export function Dashboard() {
             {/* KPI cards */}
             <motion.div
               {...cardAnimate}
-              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+              className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
             >
               <StatCard
                 icon={<Users className="h-5 w-5" />}
@@ -579,18 +579,18 @@ function StatCard({
   accent: string;
 }) {
   return (
-    <div className="rounded-[1.5rem] border border-line bg-white p-6">
+    <div className="rounded-[1.5rem] border border-line bg-white p-5 sm:p-6">
       <div
         className={cn(
-          "inline-flex h-9 w-9 items-center justify-center rounded-full bg-mint text-teal-deep",
+          "inline-flex h-8 w-8 items-center justify-center rounded-full bg-mint text-teal-deep sm:h-9 sm:w-9",
         )}
       >
         {icon}
       </div>
-      <p className="mt-4 text-[30px] font-bold tracking-[-0.02em] text-ink">
+      <p className="mt-3 text-[22px] font-bold tracking-[-0.02em] text-ink sm:mt-4 sm:text-[30px]">
         {value}
       </p>
-      <p className="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-muted">
+      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted sm:text-[12px]">
         {label}
       </p>
     </div>
