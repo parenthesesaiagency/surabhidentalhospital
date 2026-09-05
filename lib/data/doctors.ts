@@ -1,4 +1,3 @@
-import { media } from "@/lib/media";
 import { site } from "@/lib/data/site";
 
 const brand = site.name;
@@ -25,7 +24,7 @@ export const doctors: Doctor[] = [
     qualification: "BDS · Diploma in Public Health · FAGD",
     specialty: "Implantologist · Laser & Root Canal Specialist",
     bio: `Dr. Saurabh Gupta leads ${brand} with a focus on dental implants, laser dentistry and root canal care. A graduate of Darshan Dental College, Udaipur, he holds a Diploma in Public Health, a Fellowship of the Academy of General Dentistry (FAGD) and a Diploma in Implant Dentistry. He practises gentle, pain-free dentistry and serves as a consultant at Shishu Mangal Hospital, Jaipur.`,
-    photo: media.doctors[0],
+    photo: "/images/doctor-saurabh.png",
   },
 ];
 
