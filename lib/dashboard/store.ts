@@ -1,15 +1,18 @@
 import fs from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 
 /**
  * Local JSON-file data store for the self-service dashboard.
  *
  * Tracks website inquiries (booking-form submissions) and analytics events
- * (CTA clicks, page views) without any external service. Data persists to
- * `.data/dashboard.json` which is gitignored.
+ * (CTA clicks, page views) without any external service. Data persists to a
+ * `dashboard.json` file which is gitignored.
  *
- * NOTE: file-backed storage is fine for the mockup / single-instance dev.
- * Swap `readStore`/`writeStore` for a real database when this goes live.
+ * On serverless hosts (Netlify), the project directory is read-only, so the
+ * file lives in `os.tmpdir()` instead. Note that on serverless the file is
+ * per-instance and may reset between cold starts — fine for the mockup, but
+ * swap `readStore`/`writeStore` for a real database when this goes live.
  */
 
 export type InquiryStatus = "new" | "contacted" | "completed" | "cancelled";
@@ -41,7 +44,9 @@ export type Store = {
   events: AnalyticsEvent[];
 };
 
-const DATA_DIR = path.join(process.cwd(), ".data");
+const DATA_DIR = process.env.NETLIFY
+  ? path.join(os.tmpdir(), "surbhidental-dashboard")
+  : path.join(process.cwd(), ".data");
 const FILE = path.join(DATA_DIR, "dashboard.json");
 
 let cache: Store | null = null;
@@ -53,7 +58,13 @@ async function readStore(): Promise<Store> {
     cache = JSON.parse(raw) as Store;
   } catch {
     cache = { inquiries: [], events: [] };
-    await writeStore(cache);
+    // Persist lazily — if the filesystem is unreadable the dashboard still
+    // works for this instance from memory.
+    try {
+      await writeStore(cache);
+    } catch {
+      /* keep in-memory store */
+    }
   }
   return cache;
 }

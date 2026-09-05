@@ -236,7 +236,8 @@ export function Dashboard() {
             className="rounded-2xl border border-line bg-white p-6 text-sm text-muted"
             role="alert"
           >
-            Could not load dashboard data. Is the dev server running?
+            Could not load dashboard data. Try the Refresh button, and check
+            again shortly.
           </motion.div>
         )}
 
@@ -537,9 +538,10 @@ export function Dashboard() {
             </motion.section>
 
             <p className="mt-6 text-center text-[12px] text-muted">
-              Data lives in a local file (`.data/dashboard.json`) and is not
-              synced anywhere. Use this to review new website enquiries before
-              you export them to your real system.
+              Data is stored in a local file on the server and is not synced
+              anywhere. On the live host it may reset between deployments —
+              use this to review new website enquiries, then export them to
+              your real system.
             </p>
           </>
         )}
