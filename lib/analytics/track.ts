@@ -1,16 +1,19 @@
 /**
- * Conversion tracking stub.
+ * Conversion tracking.
  *
  * Every CTA carries a `data-track` attribute (set via `TrackLink` / `trackProps`)
- * so analytics can be wired in later without touching components. A single
- * delegated listener in `components/analytics/tracker.tsx` forwards clicks here.
+ * so analytics can be wired in without touching components. A single
+ * delegated listener in `components/analytics/tracker.tsx` forwards clicks here,
+ * which POSTs the event to the local dashboard API (`/api/events`).
  *
- * Wire this into your provider of choice, e.g.:
- *   window.gtag?.("event", event, props)
+ * `appointment_submit` fires from the booking form on a validated submission,
+ * and `page_view` fires from the tracker on navigation.
  */
 
 export const trackEvents = [
   "appointment_click",
+  "appointment_submit",
+  "page_view",
   "phone_click",
   "whatsapp_click",
   "map_click",
@@ -25,7 +28,13 @@ export type TrackEvent = (typeof trackEvents)[number];
 export type TrackProps = Record<string, string>;
 
 export function track(event: TrackEvent, props?: TrackProps) {
-  // Intentionally a no-op. Add your analytics provider call here.
-  void event;
-  void props;
+  const endpoint = "/api/events";
+  fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ event, page: window.location.pathname, props }),
+    keepalive: true,
+  }).catch(() => {
+    // Tracking is best-effort; never let it disturb the user.
+  });
 }

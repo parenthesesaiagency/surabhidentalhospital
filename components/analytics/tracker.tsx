@@ -1,13 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { track, type TrackEvent } from "@/lib/analytics/track";
 
 /**
  * Single delegated click listener. Any element with `data-track` fires the
  * matching analytics event — keeping CTAs server-rendered with zero per-CTA JS.
+ * Also records a `page_view` per navigation for the dashboard.
  */
 export function Tracker() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
@@ -28,6 +32,10 @@ export function Tracker() {
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
   }, []);
+
+  useEffect(() => {
+    track("page_view");
+  }, [pathname]);
 
   return null;
 }

@@ -56,6 +56,23 @@ export function BookingForm({
     e.preventDefault();
     if (validate()) {
       setSubmitted(true);
+      // The submit button carries `data-track="appointment_submit"`, so the
+      // delegated Tracker fires the event; here we persist the raw enquiry
+      // for the dashboard. Best-effort — the mockup still shows success
+      // even if the API isn't available.
+      fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          date,
+          source: window.location.pathname,
+        }),
+        keepalive: true,
+      }).catch(() => {
+        // Best-effort; the mockup still shows success without persistence.
+      });
     }
   }
 

@@ -17,7 +17,7 @@ import { Navbar } from "@/components/navbar/navbar";
 import { Footer } from "@/components/footer/footer";
 import { MobileActionBar } from "@/components/footer/mobile-action-bar";
 import { BookingProvider } from "@/components/booking/booking-provider";
-import { Tracker } from "@/components/analytics/tracker";
+import { AppShell } from "@/components/layout/app-shell";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -65,7 +65,11 @@ const jsonLd = jsonLdScript(
   dentistSchema(),
 );
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -80,18 +84,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <BookingProvider>
-          <a
-            href="#main"
-            className="sr-only z-50 rounded-full bg-teal px-5 py-2 text-sm font-bold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          <AppShell
+            navbar={<Navbar />}
+            footer={<Footer />}
+            actionBar={<MobileActionBar />}
           >
-            Skip to content
-          </a>
-          <Navbar />
-          <main id="main">{children}</main>
-          <Footer />
-          <MobileActionBar />
+            {children}
+          </AppShell>
         </BookingProvider>
-        <Tracker />
       </body>
     </html>
   );
